@@ -1,6 +1,6 @@
 ﻿namespace AplicacaoDesktop
 {
-    partial class Form1
+    partial class Form
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.DataHora = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_DataHora = new System.Windows.Forms.TextBox();
+            this.textBox_CodigoPreco = new System.Windows.Forms.TextBox();
             this.CodigoPeca = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_TempoProd = new System.Windows.Forms.TextBox();
             this.TempoProducao = new System.Windows.Forms.Label();
             this.RespostaTeste = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.SendButton = new System.Windows.Forms.Button();
+            this.button_SendButton = new System.Windows.Forms.Button();
+            this.comboBox_RespostaTest = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // DataHora
@@ -47,22 +47,23 @@
             this.DataHora.Size = new System.Drawing.Size(71, 13);
             this.DataHora.TabIndex = 0;
             this.DataHora.Text = "Data e Hora: ";
-            this.DataHora.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // textBox_DataHora
             // 
-            this.textBox1.Location = new System.Drawing.Point(101, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBox_DataHora.Location = new System.Drawing.Point(101, 10);
+            this.textBox_DataHora.Name = "textBox_DataHora";
+            this.textBox_DataHora.ReadOnly = true;
+            this.textBox_DataHora.Size = new System.Drawing.Size(220, 20);
+            this.textBox_DataHora.TabIndex = 10;
+            this.textBox_DataHora.TabStop = false;
             // 
-            // textBox2
+            // textBox_CodigoPreco
             // 
-            this.textBox2.Location = new System.Drawing.Point(119, 36);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
+            this.textBox_CodigoPreco.Location = new System.Drawing.Point(119, 36);
+            this.textBox_CodigoPreco.MaxLength = 8;
+            this.textBox_CodigoPreco.Name = "textBox_CodigoPreco";
+            this.textBox_CodigoPreco.Size = new System.Drawing.Size(202, 20);
+            this.textBox_CodigoPreco.TabIndex = 1;
             // 
             // CodigoPeca
             // 
@@ -73,12 +74,14 @@
             this.CodigoPeca.TabIndex = 2;
             this.CodigoPeca.Text = "Codigo da Peça: ";
             // 
-            // textBox3
+            // textBox_TempoProd
             // 
-            this.textBox3.Location = new System.Drawing.Point(140, 62);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 5;
+            this.textBox_TempoProd.Location = new System.Drawing.Point(140, 62);
+            this.textBox_TempoProd.MaxLength = 8;
+            this.textBox_TempoProd.Name = "textBox_TempoProd";
+            this.textBox_TempoProd.Size = new System.Drawing.Size(181, 20);
+            this.textBox_TempoProd.TabIndex = 5;
+            this.textBox_TempoProd.Text = "00:00:00";
             // 
             // TempoProducao
             // 
@@ -98,39 +101,42 @@
             this.RespostaTeste.TabIndex = 6;
             this.RespostaTeste.Text = "Resposta do Teste: ";
             // 
-            // listBox1
+            // button_SendButton
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(133, 91);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(126, 30);
-            this.listBox1.TabIndex = 7;
+            this.button_SendButton.Location = new System.Drawing.Point(12, 121);
+            this.button_SendButton.Name = "button_SendButton";
+            this.button_SendButton.Size = new System.Drawing.Size(75, 23);
+            this.button_SendButton.TabIndex = 8;
+            this.button_SendButton.Text = "Enviar";
+            this.button_SendButton.UseVisualStyleBackColor = true;
+            this.button_SendButton.Click += new System.EventHandler(this.button_SendButton_Click);
             // 
-            // SendButton
+            // comboBox_RespostaTest
             // 
-            this.SendButton.Location = new System.Drawing.Point(246, 167);
-            this.SendButton.Name = "SendButton";
-            this.SendButton.Size = new System.Drawing.Size(75, 23);
-            this.SendButton.TabIndex = 8;
-            this.SendButton.Text = "Enviar";
-            this.SendButton.UseVisualStyleBackColor = true;
+            this.comboBox_RespostaTest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_RespostaTest.FormattingEnabled = true;
+            this.comboBox_RespostaTest.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.comboBox_RespostaTest.Location = new System.Drawing.Point(133, 88);
+            this.comboBox_RespostaTest.Name = "comboBox_RespostaTest";
+            this.comboBox_RespostaTest.Size = new System.Drawing.Size(188, 21);
+            this.comboBox_RespostaTest.TabIndex = 11;
             // 
-            // Form1
+            // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(333, 202);
-            this.Controls.Add(this.SendButton);
-            this.Controls.Add(this.listBox1);
+            this.ClientSize = new System.Drawing.Size(333, 154);
+            this.Controls.Add(this.comboBox_RespostaTest);
+            this.Controls.Add(this.button_SendButton);
             this.Controls.Add(this.RespostaTeste);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox_TempoProd);
             this.Controls.Add(this.TempoProducao);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox_CodigoPreco);
             this.Controls.Add(this.CodigoPeca);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_DataHora);
             this.Controls.Add(this.DataHora);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Form";
+            this.Text = "DescktopApp";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,14 +145,14 @@
         #endregion
 
         private System.Windows.Forms.Label DataHora;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_DataHora;
+        private System.Windows.Forms.TextBox textBox_CodigoPreco;
         private System.Windows.Forms.Label CodigoPeca;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_TempoProd;
         private System.Windows.Forms.Label TempoProducao;
         private System.Windows.Forms.Label RespostaTeste;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button SendButton;
+        private System.Windows.Forms.Button button_SendButton;
+        private System.Windows.Forms.ComboBox comboBox_RespostaTest;
     }
 }
 
