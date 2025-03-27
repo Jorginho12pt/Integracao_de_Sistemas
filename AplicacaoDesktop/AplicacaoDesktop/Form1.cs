@@ -13,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace AplicacaoDesktop
 {
     public partial class Form: System.Windows.Forms.Form
-    {                                                // colocar o nome do vosso server
+    {
         public SqlConnection con = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=SistemaDesktop;Integrated Security=True");
         enum Resposta
         {
@@ -49,7 +49,6 @@ namespace AplicacaoDesktop
 
                         using (var cmd = new SqlCommand("INSERT INTO dbo.Teste (DataHora, CodigoPeca, TempoProducao, ResultadoTeste) VALUES (@DataHora,@CodigoPeca,@TempoProducao, @ResultadoTeste)"))
                         {
-
                             cmd.Connection = con;
                             cmd.Parameters.AddWithValue("@DataHora", DateTime.Parse(textBox_DataHora.Text));
                             cmd.Parameters.AddWithValue("@CodigoPeca", textBox_CodigoPreco.Text);
@@ -63,7 +62,7 @@ namespace AplicacaoDesktop
                             }
                             else
                             {
-                                MessageBox.Show("Deu merda");
+                                MessageBox.Show("Deu erro");
                             }
                         }
                     }
@@ -72,6 +71,7 @@ namespace AplicacaoDesktop
                         MessageBox.Show("Error during insert: " + r.Message);
                     }
                 }
+
 
                 // CHamar API do Server
             }
