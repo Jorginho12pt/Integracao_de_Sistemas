@@ -13,8 +13,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace AplicacaoDesktop
 {
     public partial class Form: System.Windows.Forms.Form
-    {                                                // colocar o nome do vosso server
-        public SqlConnection con = new SqlConnection(@"Server=DESKTOP-KMH9NTP\SQLEXPRESS;Database=SistemaDesktop;Integrated Security=True"); // Jorge
+    {    
+        public SqlConnection con = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=SistemaDesktop;Integrated Security=True");
         enum Resposta
         {
             Ok = 1,
@@ -49,17 +49,7 @@ namespace AplicacaoDesktop
 
                         using (var cmd = new SqlCommand("INSERT INTO dbo.Teste (DataHora, CodigoPeca, TempoProducao, ResultadoTeste) VALUES (@DataHora,@CodigoPeca,@TempoProducao, @ResultadoTeste)"))
                         {
-                            DateTime a;
-                            DateTime.TryParse(textBox_DataHora.Text ,out a);
-
-                            var aa = a;
-                            var aaaaa = Enum.Parse(typeof(Resposta), comboBox_RespostaTest.Text);
-                            var b = textBox_CodigoPreco.Text;
-                            var c = textBox_TempoProd.Text;
-                            var d = comboBox_RespostaTest.Text;
-                            var gg = Enum.Parse(typeof(Resposta), comboBox_RespostaTest.Text);
-
-
+                         
                             cmd.Connection = con;
                             cmd.Parameters.AddWithValue("@DataHora", DateTime.Parse(textBox_DataHora.Text));
                             cmd.Parameters.AddWithValue("@CodigoPeca", textBox_CodigoPreco.Text);
@@ -73,7 +63,7 @@ namespace AplicacaoDesktop
                             }
                             else
                             {
-                                MessageBox.Show("Deu merda");
+                                MessageBox.Show("Deu erro");
                             }
                         }
                     }
@@ -82,6 +72,7 @@ namespace AplicacaoDesktop
                         MessageBox.Show("Error during insert: " + r.Message);
                     }
                 }
+
 
                 // CHamar API do Server
             }
