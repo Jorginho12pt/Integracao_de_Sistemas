@@ -1,39 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static AplicacaoDesktop.EnumEx;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace AplicacaoDesktop
 {
     public partial class Form: System.Windows.Forms.Form
     {
-        public SqlConnection con = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=SistemaDesktop;Integrated Security=True");
-        enum Resposta
-        {
-            Ok = 1,
-            Falha_na_inspeção_visual = 2,
-            Falha_na_inspeção_de_resistência = 3,
-            Falha_na_inspeção_de_dimensões = 4,
-            Falha_na_inspeção_de_estanqueidade = 5,
-            Desconhecido = 6
-        }
-
         public Form()
         {
             InitializeComponent();
             textBox_DataHora.Text = DateTime.UtcNow.ToString();
-            comboBox_RespostaTest.Items.AddRange(Enum.GetNames(typeof(Resposta)));
         }
 
-
-        private void button_SendButton_Click(object sender, EventArgs e)
+        private async void button_SendButton_ClickAsync(object sender, EventArgs e)
         {
             if (this.Controls.Cast<Control>().Any(c => (c is System.Windows.Forms.TextBox || c is System.Windows.Forms.ComboBox) && string.IsNullOrEmpty(c.Text)))
             {
@@ -42,41 +27,35 @@ namespace AplicacaoDesktop
             }
             else
             {
-                using (con)
+                try
                 {
-                    try
-                    {
+                    DesktopTeste teste = new DesktopTeste();
 
-                        using (var cmd = new SqlCommand("INSERT INTO dbo.Teste (DataHora, CodigoPeca, TempoProducao, ResultadoTeste) VALUES (@DataHora,@CodigoPeca,@TempoProducao, @ResultadoTeste)"))
-                        {
-                            cmd.Connection = con;
-                            cmd.Parameters.AddWithValue("@DataHora", DateTime.Parse(textBox_DataHora.Text));
-                            cmd.Parameters.AddWithValue("@CodigoPeca", textBox_CodigoPreco.Text);
-                            cmd.Parameters.AddWithValue("@TempoProducao", DateTime.Parse(textBox_TempoProd.Text));
-                            cmd.Parameters.AddWithValue("@ResultadoTeste", Enum.Parse(typeof(Resposta), comboBox_RespostaTest.Text));
+                    teste.DataHora = DateTime.Parse(textBox_DataHora.Text);
+                    teste.CodigoPeca = textBox_CodigoPreco.Text;
+                    teste.TempoProduco = TimeSpan.Parse(textBox_TempoProd.Text);
+                    teste.ResultadoTeste = GetValueFromDescription<Resposta>(comboBox_RespostaTest.Text);
 
-                            con.Open();
-                            if (cmd.ExecuteNonQuery() > 0)
-                            {
-                                MessageBox.Show("Foi gravado na base de dados, amigo");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Deu erro");
-                            }
-                        }
-                    }
-                    catch (Exception r)
+                    var json = JsonConvert.SerializeObject(teste);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    using (var client = new HttpClient())
                     {
-                        MessageBox.Show("Error during insert: " + r.Message);
+                        var response = await client.PostAsync("https://localhost:7252/Api/InsercaoTeste", content);
+                        var responseString = await response.Content.ReadAsStringAsync();
+                        MessageBox.Show(responseString);
                     }
                 }
-
-
-                // CHamar API do Server
+                catch (Exception r)
+                {
+                    MessageBox.Show("Error: " + r.Message);
+                }
             }
             
             textBox_DataHora.Text = DateTime.UtcNow.ToString();
+            textBox_CodigoPreco.Text = "";
+            textBox_TempoProd.Text = "00:00:00";
+            comboBox_RespostaTest.SelectedIndex = -1;
         }
     }
 }

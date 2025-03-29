@@ -109,13 +109,20 @@
             this.button_SendButton.TabIndex = 8;
             this.button_SendButton.Text = "Enviar";
             this.button_SendButton.UseVisualStyleBackColor = true;
-            this.button_SendButton.Click += new System.EventHandler(this.button_SendButton_Click);
+            this.button_SendButton.Click += new System.EventHandler(this.button_SendButton_ClickAsync);
             // 
             // comboBox_RespostaTest
             // 
             this.comboBox_RespostaTest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_RespostaTest.FormattingEnabled = true;
             this.comboBox_RespostaTest.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.comboBox_RespostaTest.Items.AddRange(new object[] {
+            "Ok",
+            "Falha na inspeção visual",
+            "Falha na inspeção de resistência",
+            "Falha na inspeção de dimensões",
+            "Falha na inspeção de estanqueidade",
+            "Desconhecido"});
             this.comboBox_RespostaTest.Location = new System.Drawing.Point(133, 88);
             this.comboBox_RespostaTest.Name = "comboBox_RespostaTest";
             this.comboBox_RespostaTest.Size = new System.Drawing.Size(188, 21);
