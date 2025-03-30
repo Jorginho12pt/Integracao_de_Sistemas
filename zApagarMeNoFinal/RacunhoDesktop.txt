@@ -1,3 +1,5 @@
+//public SqlConnection SistemaWebConnection = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True");
+//public SqlConnection SistemaContabilidadeConnection = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=SistemaContabilidade;Trusted_Connection=True;TrustServerCertificate=True");
 //AplicacaoDesktop-------------------------------------------------------------------------------------------------------------
 
 using System;

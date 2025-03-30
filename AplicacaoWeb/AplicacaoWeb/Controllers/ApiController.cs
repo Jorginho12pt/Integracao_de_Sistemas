@@ -10,8 +10,78 @@ namespace AplicacaoWeb.Controllers
     [Route("[controller]")]
     public class ApiController : ControllerBase
     {
-        //public SqlConnection SistemaWebConnection = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True");
-        //public SqlConnection SistemaContabilidadeConnection = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=SistemaContabilidade;Trusted_Connection=True;TrustServerCertificate=True");
+        
+        [HttpGet("GetProductSP")]
+        public ActionResult GetProductSP()
+        {
+            try
+            {
+                List<Produto> produto = new List<Produto>();
+
+                using (SqlConnection SistemaWebConnection = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True"))
+                {
+                    using (SqlCommand command = new SqlCommand("GetProduto", SistemaWebConnection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        SistemaWebConnection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Produto body = new Produto();
+                            body.IdProduto = Convert.ToInt32(reader["IdProduto"]);
+                            body.CodigoPeca = Convert.ToString(reader["CodigoPeca"]);
+                            body.DataHoraProducao = Convert.ToDateTime(reader["DataHoraProducao"]);
+                            body.TempoProduco = TimeSpan.Parse(reader["TempoProducao"]?.ToString());
+                            produto.Add(body);
+                        }
+                        SistemaWebConnection.Close();
+                    }
+                }
+
+                return Ok(produto);
+            }
+            catch (SqlException ex)
+            {
+                return BadRequest($"Erro no banco de dados: {ex.Message}");
+            }
+        }
+
+        [HttpGet("GetTestsSP")]
+        public ActionResult GetTestsSP()
+        {
+            try
+            {
+                List<Testes> testes = new List<Testes>();
+
+                using (SqlConnection SistemaWebConnection = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True"))
+                {
+                    using (SqlCommand command = new SqlCommand("GetTestes", SistemaWebConnection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        SistemaWebConnection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Testes body = new Testes();
+                            body.IdTeste = Convert.ToInt32(reader["IdTeste"]);
+                            body.IdProduto = Convert.ToInt32(reader["IdProduto"]);
+                            body.CodigoResultado = Convert.ToInt32(reader["CodigoResultado"]);
+                            body.DataTeste = Convert.ToDateTime(reader["DataTeste"]);
+                            testes.Add(body);
+                        }
+                        SistemaWebConnection.Close();
+                    }
+                }
+
+                return Ok(testes);
+            }
+            catch (SqlException ex)
+            {
+                return BadRequest($"Erro no banco de dados: {ex.Message}");
+            }
+        }
 
         [HttpPost("InsertTesteSP")]
         public ActionResult InsertTesteSP([FromBody] TesteRelatorio body)
