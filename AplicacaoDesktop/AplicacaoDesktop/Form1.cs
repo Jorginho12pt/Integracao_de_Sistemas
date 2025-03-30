@@ -41,7 +41,7 @@ namespace AplicacaoDesktop
 
                     using (var client = new HttpClient())
                     {
-                        var response = await client.PostAsync("https://localhost:7252/Api/InsercaoTeste", content);
+                        var response = await client.PostAsync("https://localhost:7252/Api/InsertTesteSP", content);
                         var responseString = await response.Content.ReadAsStringAsync();
                         MessageBox.Show(responseString);
                     }
