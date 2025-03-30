@@ -33,7 +33,8 @@ namespace AplicacaoDesktop
 
                     teste.DataHora = DateTime.Parse(textBox_DataHora.Text);
                     teste.CodigoPeca = textBox_CodigoPreco.Text;
-                    teste.TempoProduco = TimeSpan.Parse(textBox_TempoProd.Text);
+
+                    teste.TempoProduco = TimeSpan.FromSeconds(int.Parse(textBox_TempoProd.Text));
                     teste.ResultadoTeste = GetValueFromDescription<Resposta>(comboBox_RespostaTest.Text);
 
                     var json = JsonConvert.SerializeObject(teste);
@@ -54,8 +55,13 @@ namespace AplicacaoDesktop
             
             textBox_DataHora.Text = DateTime.UtcNow.ToString();
             textBox_CodigoPreco.Text = "";
-            textBox_TempoProd.Text = "00:00:00";
+            textBox_TempoProd.Text = "";
             comboBox_RespostaTest.SelectedIndex = -1;
+        }
+
+        private void TempoProducao_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

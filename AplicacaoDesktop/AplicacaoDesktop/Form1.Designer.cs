@@ -42,7 +42,7 @@
             // DataHora
             // 
             this.DataHora.AutoSize = true;
-            this.DataHora.Location = new System.Drawing.Point(24, 13);
+            this.DataHora.Location = new System.Drawing.Point(12, 13);
             this.DataHora.Name = "DataHora";
             this.DataHora.Size = new System.Drawing.Size(71, 13);
             this.DataHora.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             // textBox_DataHora
             // 
-            this.textBox_DataHora.Location = new System.Drawing.Point(101, 10);
+            this.textBox_DataHora.Location = new System.Drawing.Point(89, 10);
             this.textBox_DataHora.Name = "textBox_DataHora";
             this.textBox_DataHora.ReadOnly = true;
             this.textBox_DataHora.Size = new System.Drawing.Size(220, 20);
@@ -59,7 +59,7 @@
             // 
             // textBox_CodigoPreco
             // 
-            this.textBox_CodigoPreco.Location = new System.Drawing.Point(119, 36);
+            this.textBox_CodigoPreco.Location = new System.Drawing.Point(107, 36);
             this.textBox_CodigoPreco.MaxLength = 8;
             this.textBox_CodigoPreco.Name = "textBox_CodigoPreco";
             this.textBox_CodigoPreco.Size = new System.Drawing.Size(202, 20);
@@ -68,7 +68,7 @@
             // CodigoPeca
             // 
             this.CodigoPeca.AutoSize = true;
-            this.CodigoPeca.Location = new System.Drawing.Point(24, 39);
+            this.CodigoPeca.Location = new System.Drawing.Point(12, 39);
             this.CodigoPeca.Name = "CodigoPeca";
             this.CodigoPeca.Size = new System.Drawing.Size(89, 13);
             this.CodigoPeca.TabIndex = 2;
@@ -76,26 +76,26 @@
             // 
             // textBox_TempoProd
             // 
-            this.textBox_TempoProd.Location = new System.Drawing.Point(140, 62);
-            this.textBox_TempoProd.MaxLength = 8;
+            this.textBox_TempoProd.Location = new System.Drawing.Point(183, 62);
+            this.textBox_TempoProd.MaxLength = 2;
             this.textBox_TempoProd.Name = "textBox_TempoProd";
-            this.textBox_TempoProd.Size = new System.Drawing.Size(181, 20);
+            this.textBox_TempoProd.Size = new System.Drawing.Size(126, 20);
             this.textBox_TempoProd.TabIndex = 5;
-            this.textBox_TempoProd.Text = "00:00:00";
             // 
             // TempoProducao
             // 
             this.TempoProducao.AutoSize = true;
-            this.TempoProducao.Location = new System.Drawing.Point(24, 65);
+            this.TempoProducao.Location = new System.Drawing.Point(12, 65);
             this.TempoProducao.Name = "TempoProducao";
-            this.TempoProducao.Size = new System.Drawing.Size(110, 13);
+            this.TempoProducao.Size = new System.Drawing.Size(165, 13);
             this.TempoProducao.TabIndex = 4;
-            this.TempoProducao.Text = "Tempo de Produção: ";
+            this.TempoProducao.Text = "Tempo de Produção (segundos): ";
+            this.TempoProducao.Click += new System.EventHandler(this.TempoProducao_Click);
             // 
             // RespostaTeste
             // 
             this.RespostaTeste.AutoSize = true;
-            this.RespostaTeste.Location = new System.Drawing.Point(24, 91);
+            this.RespostaTeste.Location = new System.Drawing.Point(12, 91);
             this.RespostaTeste.Name = "RespostaTeste";
             this.RespostaTeste.Size = new System.Drawing.Size(103, 13);
             this.RespostaTeste.TabIndex = 6;
@@ -103,7 +103,7 @@
             // 
             // button_SendButton
             // 
-            this.button_SendButton.Location = new System.Drawing.Point(12, 121);
+            this.button_SendButton.Location = new System.Drawing.Point(15, 119);
             this.button_SendButton.Name = "button_SendButton";
             this.button_SendButton.Size = new System.Drawing.Size(75, 23);
             this.button_SendButton.TabIndex = 8;
@@ -123,7 +123,7 @@
             "Falha na inspeção de dimensões",
             "Falha na inspeção de estanqueidade",
             "Desconhecido"});
-            this.comboBox_RespostaTest.Location = new System.Drawing.Point(133, 88);
+            this.comboBox_RespostaTest.Location = new System.Drawing.Point(121, 88);
             this.comboBox_RespostaTest.Name = "comboBox_RespostaTest";
             this.comboBox_RespostaTest.Size = new System.Drawing.Size(188, 21);
             this.comboBox_RespostaTest.TabIndex = 11;
