@@ -13,7 +13,7 @@ namespace AplicacaoWeb.Controllers
         //public SqlConnection SistemaWebConnection = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True");
         //public SqlConnection SistemaContabilidadeConnection = new SqlConnection(@"Server=localhost\SQLEXPRESS;Database=SistemaContabilidade;Trusted_Connection=True;TrustServerCertificate=True");
 
-        [HttpPost("Inserção do Teste")]
+        [HttpPost("InsertTesteSP")]
         public ActionResult InsertTesteSP([FromBody] TesteRelatorio body)
         {
             try
@@ -38,12 +38,12 @@ namespace AplicacaoWeb.Controllers
                 return Ok("Dados inseridos com sucesso!");
             }
             catch (SqlException ex)
-            {
+            {               
                 return BadRequest($"Erro no banco de dados: {ex.Message}");
             }
         }
 
-        [HttpPut("Atualizar Produto")]
+        [HttpPut("UpdateProductSP")]
         public ActionResult UpdateProductSP([FromBody] Produto body)
         {
             try
@@ -73,7 +73,7 @@ namespace AplicacaoWeb.Controllers
             }
         }
 
-        [HttpPut("Atualizar Testes")]
+        [HttpPut("UpdateTestsSP")]
         public ActionResult UpdateTestsSP([FromBody] Testes body)
         {
             try
@@ -103,7 +103,7 @@ namespace AplicacaoWeb.Controllers
             }
         }
 
-        [HttpDelete("Remoção do Produto")]
+        [HttpDelete("RemoveProductSP")]
         public ActionResult RemoveProductSP([FromBody] Produto body)
         {
             try
@@ -134,7 +134,7 @@ namespace AplicacaoWeb.Controllers
             }
         }
 
-        [HttpDelete("Remoção dos Testes")]
+        [HttpDelete("RemoveTestsSP")]
         public ActionResult RemoveTestsSP([FromBody] Testes body)
         {
             try
