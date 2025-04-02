@@ -32,7 +32,7 @@ namespace AplicacaoWeb.Controllers
                             body.IdProduto = Convert.ToInt32(reader["IdProduto"]);
                             body.CodigoPeca = Convert.ToString(reader["CodigoPeca"]);
                             body.DataHoraProducao = Convert.ToDateTime(reader["DataHoraProducao"]);
-                            body.TempoProduco = TimeSpan.Parse(reader["TempoProducao"]?.ToString());
+                            body.TempoProduco = Convert.ToInt32(reader["TempoProducao"]);
                             produto.Add(body);
                         }
                         SistemaWebConnection.Close();
@@ -96,7 +96,7 @@ namespace AplicacaoWeb.Controllers
 
                         command.Parameters.Add("@_DataHora", SqlDbType.DateTime2).Value = body.DataHora;
                         command.Parameters.Add("@_CodigoPeca", SqlDbType.VarChar).Value = body.CodigoPeca;
-                        command.Parameters.Add("@_TempoProducao", SqlDbType.Time).Value = body.TempoProduco;
+                        command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProduco;
                         command.Parameters.Add("@_ResultadoTeste", SqlDbType.Int).Value = body.ResultadoTeste;
 
                         SistemaWebConnection.Open();
@@ -127,7 +127,7 @@ namespace AplicacaoWeb.Controllers
                         command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
                         command.Parameters.Add("@_CodigoPeca", SqlDbType.VarChar).Value = body.CodigoPeca;
                         command.Parameters.Add("@_DataHoraProducao", SqlDbType.DateTime2).Value = body.DataHoraProducao;
-                        command.Parameters.Add("@_TempoProducao", SqlDbType.Time).Value = body.TempoProduco;
+                        command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProduco;
 
                         SistemaWebConnection.Open();
                         command.ExecuteNonQuery();
@@ -187,7 +187,7 @@ namespace AplicacaoWeb.Controllers
                         command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
                         command.Parameters.Add("@_CodigoPeca", SqlDbType.VarChar).Value = body.CodigoPeca;
                         command.Parameters.Add("@_DataHoraProducao", SqlDbType.DateTime2).Value = body.DataHoraProducao;
-                        command.Parameters.Add("@_TempoProducao", SqlDbType.Time).Value = body.TempoProduco;
+                        command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProduco;
 
                         SistemaWebConnection.Open();
                         command.ExecuteNonQuery();
