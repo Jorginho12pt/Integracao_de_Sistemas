@@ -37,6 +37,7 @@
             this.RespostaTeste = new System.Windows.Forms.Label();
             this.button_SendButton = new System.Windows.Forms.Button();
             this.comboBox_RespostaTest = new System.Windows.Forms.ComboBox();
+            this.button_Random = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DataHora
@@ -128,11 +129,22 @@
             this.comboBox_RespostaTest.Size = new System.Drawing.Size(188, 21);
             this.comboBox_RespostaTest.TabIndex = 11;
             // 
+            // button_Random
+            // 
+            this.button_Random.Location = new System.Drawing.Point(234, 119);
+            this.button_Random.Name = "button_Random";
+            this.button_Random.Size = new System.Drawing.Size(75, 23);
+            this.button_Random.TabIndex = 12;
+            this.button_Random.Text = "Random";
+            this.button_Random.UseVisualStyleBackColor = true;
+            this.button_Random.Click += new System.EventHandler(this.button_Random_Click);
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(333, 154);
+            this.Controls.Add(this.button_Random);
             this.Controls.Add(this.comboBox_RespostaTest);
             this.Controls.Add(this.button_SendButton);
             this.Controls.Add(this.RespostaTeste);
@@ -160,6 +172,7 @@
         private System.Windows.Forms.Label RespostaTeste;
         private System.Windows.Forms.Button button_SendButton;
         private System.Windows.Forms.ComboBox comboBox_RespostaTest;
+        private System.Windows.Forms.Button button_Random;
     }
 }
 

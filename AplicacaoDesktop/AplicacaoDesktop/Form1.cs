@@ -63,5 +63,18 @@ namespace AplicacaoDesktop
         {
 
         }
+
+        private void button_Random_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            const string chars = "ab";
+            const string chars2 = "123456789";
+
+            textBox_DataHora.Text = DateTime.UtcNow.ToString();
+            textBox_CodigoPreco.Text = new string(Enumerable.Repeat(chars, 2).Select(s => s[random.Next(s.Length)]).ToArray()) 
+                + new string(Enumerable.Repeat(chars2, 6).Select(s => s[random.Next(s.Length)]).ToArray());
+            textBox_TempoProd.Text = random.Next(10, 51).ToString();
+            comboBox_RespostaTest.SelectedIndex = random.Next(6);
+        }
     }
 }
