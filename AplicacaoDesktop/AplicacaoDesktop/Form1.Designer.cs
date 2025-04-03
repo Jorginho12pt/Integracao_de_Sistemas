@@ -119,10 +119,10 @@
             this.comboBox_RespostaTest.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.comboBox_RespostaTest.Items.AddRange(new object[] {
             "Ok",
-            "Falha na inspeção visual",
-            "Falha na inspeção de resistência",
-            "Falha na inspeção de dimensões",
-            "Falha na inspeção de estanqueidade",
+            "Falha na inspecao visual",
+            "Falha na inspecao de resistencia",
+            "Falha na inspecao de dimensoes",
+            "Falha na inspecao de estanqueidade",
             "Desconhecido"});
             this.comboBox_RespostaTest.Location = new System.Drawing.Point(121, 88);
             this.comboBox_RespostaTest.Name = "comboBox_RespostaTest";

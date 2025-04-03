@@ -6,12 +6,12 @@ api_url = "https://localhost:7252/Api/InsertTesteSP"
 
 data_hora, codigo_peca, tempo_producao, resultado_teste = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 
-# Construct JSON payload
 payload = {
-    "DataHora": data_hora,
-    "CodigoPeca": codigo_peca,
-    "TempoProduco": int(tempo_producao),  
-    "ResultadoTeste": resultado_teste
+    "dataHora": data_hora,
+    "codigoPeca": codigo_peca,
+    "tempoProducao": int(tempo_producao),
+    "resultadoTeste": resultado_teste
 }
+
 response = requests.post(api_url, json=payload)
-print(response.status_code, response.text)
+print("Payload success:", response.status_code, response.text)
