@@ -15,7 +15,7 @@ namespace AplicacaoDesktop
         public Form()
         {
             InitializeComponent();
-            textBox_DataHora.Text = DateTime.UtcNow.ToString();
+            textBox_DataHora.Text = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
         }
 
         private async void button_SendButton_ClickAsync(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace AplicacaoDesktop
                 }
             }
             
-            textBox_DataHora.Text = DateTime.UtcNow.ToString();
+            textBox_DataHora.Text = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
             textBox_CodigoPreco.Text = "";
             textBox_TempoProd.Text = "";
             comboBox_RespostaTest.SelectedIndex = -1;
@@ -70,7 +70,7 @@ namespace AplicacaoDesktop
             const string chars = "ab";
             const string chars2 = "123456789";
 
-            textBox_DataHora.Text = DateTime.UtcNow.ToString();
+            textBox_DataHora.Text = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
             textBox_CodigoPreco.Text = new string(Enumerable.Repeat(chars, 2).Select(s => s[random.Next(s.Length)]).ToArray()) 
                 + new string(Enumerable.Repeat(chars2, 6).Select(s => s[random.Next(s.Length)]).ToArray());
             textBox_TempoProd.Text = random.Next(10, 51).ToString();
