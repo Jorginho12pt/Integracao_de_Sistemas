@@ -155,7 +155,7 @@
             this.Controls.Add(this.textBox_DataHora);
             this.Controls.Add(this.DataHora);
             this.Name = "Form";
-            this.Text = "DescktopApp";
+            this.Text = "DesktopApp";
             this.ResumeLayout(false);
             this.PerformLayout();
 

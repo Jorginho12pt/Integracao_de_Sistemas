@@ -34,7 +34,7 @@ namespace AplicacaoDesktop
                     teste.DataHora = DateTime.Parse(textBox_DataHora.Text);
                     teste.CodigoPeca = textBox_CodigoPreco.Text;
 
-                    teste.TempoProduco = int.Parse(textBox_TempoProd.Text);
+                    teste.TempoProducao = int.Parse(textBox_TempoProd.Text);
                     teste.ResultadoTeste = GetValueFromDescription<Resposta>(comboBox_RespostaTest.Text);
 
                     var json = JsonConvert.SerializeObject(teste);
