@@ -8,10 +8,10 @@ if exists(Pattern("DescktopApp.png").similar(0.40)):
     tempo_producaoImage = (Region(216,121,22,15))  
     resultado_testeImage = (Region(151,139,172,30))  
 
-    data_hora = data_horaImage.text()
-    codigo_peca =  codigo_pecaImage.text()
-    tempo_producao = tempo_producaoImage.text()
-    resultado_teste = resultado_testeImage.text()
+    data_hora = data_horaImage.text();
+    codigo_peca =  codigo_pecaImage.text();
+    tempo_producao = tempo_producaoImage.text();
+    resultado_teste = resultado_testeImage.text();
 
     print("DataHora:", data_hora)
     print("CodigoPeca:", codigo_peca)
