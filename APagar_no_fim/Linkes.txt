@@ -1,0 +1,41 @@
+https://www.rabbitmq.com/docs/management
+https://www.rabbitmq.com/tutorials/tutorial-one-dotnet
+
+------------CMD do RabbitMQ------------
+C:\Program Files\RabbitMQ Server\rabbitmq_server-4.1.0\sbin>
+
+------------enable RabbitMQ UI------------
+rabbitmq-plugins enable rabbitmq_management  
+
+------------new user admin------------
+rabbitmqctl.bat add_user  1 2  
+rabbitmqctl set_user_tags 1 administrator 
+
+------------RabbitMQ UI------------
+http://localhost:15672/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
