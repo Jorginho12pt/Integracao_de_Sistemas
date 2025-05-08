@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net.Http;
@@ -7,6 +6,10 @@ using System.Windows.Forms;
 using static AplicacaoDesktop.EnumEx;
 using Newtonsoft.Json;
 using System.Text;
+using RabbitMQ.Client;
+using RabbitMQ.Client;
+using System.Text;
+using System.Diagnostics;
 
 namespace AplicacaoDesktop
 {
@@ -16,6 +19,17 @@ namespace AplicacaoDesktop
         {
             InitializeComponent();
             textBox_DataHora.Text = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
+        }
+
+        private string getFormInformationJsonSerializeObject()
+        {
+            DesktopTeste teste = new DesktopTeste();
+            teste.DataHora = DateTime.Parse(textBox_DataHora.Text);
+            teste.CodigoPeca = textBox_CodigoPreco.Text;
+
+            teste.TempoProducao = int.Parse(textBox_TempoProd.Text);
+            teste.ResultadoTeste = GetValueFromDescription<Resposta>(comboBox_RespostaTest.Text);
+            return JsonConvert.SerializeObject(teste);
         }
 
         private async void button_SendButton_ClickAsync(object sender, EventArgs e)
@@ -29,15 +43,7 @@ namespace AplicacaoDesktop
             {
                 try
                 {
-                    DesktopTeste teste = new DesktopTeste();
-
-                    teste.DataHora = DateTime.Parse(textBox_DataHora.Text);
-                    teste.CodigoPeca = textBox_CodigoPreco.Text;
-
-                    teste.TempoProducao = int.Parse(textBox_TempoProd.Text);
-                    teste.ResultadoTeste = GetValueFromDescription<Resposta>(comboBox_RespostaTest.Text);
-
-                    var json = JsonConvert.SerializeObject(teste);
+                    string json = getFormInformationJsonSerializeObject();
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                     using (var client = new HttpClient())
@@ -75,6 +81,33 @@ namespace AplicacaoDesktop
                 + new string(Enumerable.Repeat(chars2, 6).Select(s => s[random.Next(s.Length)]).ToArray());
             textBox_TempoProd.Text = random.Next(10, 51).ToString();
             comboBox_RespostaTest.SelectedIndex = random.Next(6);
+        }
+
+        private async void button_SendRabbitMq_Click(object sender, EventArgs e)
+        {
+            var factory = new ConnectionFactory {
+                HostName = "localhost",
+                Port = 5672,
+                UserName = "guest",
+                Password = "guest"
+            };
+            using var connection = await factory.CreateConnectionAsync();
+            using var channel = await connection.CreateChannelAsync();
+
+            await channel.QueueDeclareAsync(
+                    queue: "AplicacaoWeb",
+                    durable: true,
+                    exclusive: false,
+                    autoDelete: false,
+                    arguments: null);
+
+            string json = getFormInformationJsonSerializeObject();
+
+            var body = Encoding.UTF8.GetBytes(json);
+
+            await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "AplicacaoWeb", body: body);
+
+            Debug.WriteLine($"{json}");
         }
     }
 }

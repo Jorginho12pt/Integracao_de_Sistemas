@@ -6,7 +6,11 @@ var factory = new ConnectionFactory { HostName = "localhost" };
 using var connection = await factory.CreateConnectionAsync();
 using var channel = await connection.CreateChannelAsync();
 
-await channel.QueueDeclareAsync(queue: "hello", durable: false, exclusive: false, autoDelete: false,
+await channel.QueueDeclareAsync(
+    queue: "AplicacaoWeb", 
+    durable: true, 
+    exclusive: false, 
+    autoDelete: false,
     arguments: null);
 
 Console.WriteLine(" [*] Waiting for messages.");
@@ -16,7 +20,9 @@ consumer.ReceivedAsync += (model, ea) =>
 {
     var body = ea.Body.ToArray();
     var message = Encoding.UTF8.GetString(body);
-    Console.WriteLine($" [x] Received {message}");
+    
+
+
     return Task.CompletedTask;
 };
 

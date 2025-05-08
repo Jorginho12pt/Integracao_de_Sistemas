@@ -38,6 +38,7 @@
             this.button_SendButton = new System.Windows.Forms.Button();
             this.comboBox_RespostaTest = new System.Windows.Forms.ComboBox();
             this.button_Random = new System.Windows.Forms.Button();
+            this.button_SendRabbitMq = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DataHora
@@ -54,7 +55,7 @@
             this.textBox_DataHora.Location = new System.Drawing.Point(89, 10);
             this.textBox_DataHora.Name = "textBox_DataHora";
             this.textBox_DataHora.ReadOnly = true;
-            this.textBox_DataHora.Size = new System.Drawing.Size(220, 20);
+            this.textBox_DataHora.Size = new System.Drawing.Size(270, 20);
             this.textBox_DataHora.TabIndex = 10;
             this.textBox_DataHora.TabStop = false;
             // 
@@ -63,7 +64,7 @@
             this.textBox_CodigoPreco.Location = new System.Drawing.Point(107, 36);
             this.textBox_CodigoPreco.MaxLength = 8;
             this.textBox_CodigoPreco.Name = "textBox_CodigoPreco";
-            this.textBox_CodigoPreco.Size = new System.Drawing.Size(202, 20);
+            this.textBox_CodigoPreco.Size = new System.Drawing.Size(252, 20);
             this.textBox_CodigoPreco.TabIndex = 1;
             // 
             // CodigoPeca
@@ -80,7 +81,7 @@
             this.textBox_TempoProd.Location = new System.Drawing.Point(183, 62);
             this.textBox_TempoProd.MaxLength = 2;
             this.textBox_TempoProd.Name = "textBox_TempoProd";
-            this.textBox_TempoProd.Size = new System.Drawing.Size(126, 20);
+            this.textBox_TempoProd.Size = new System.Drawing.Size(176, 20);
             this.textBox_TempoProd.TabIndex = 5;
             // 
             // TempoProducao
@@ -104,7 +105,7 @@
             // 
             // button_SendButton
             // 
-            this.button_SendButton.Location = new System.Drawing.Point(15, 119);
+            this.button_SendButton.Location = new System.Drawing.Point(15, 115);
             this.button_SendButton.Name = "button_SendButton";
             this.button_SendButton.Size = new System.Drawing.Size(75, 23);
             this.button_SendButton.TabIndex = 8;
@@ -126,12 +127,12 @@
             "Desconhecido"});
             this.comboBox_RespostaTest.Location = new System.Drawing.Point(121, 88);
             this.comboBox_RespostaTest.Name = "comboBox_RespostaTest";
-            this.comboBox_RespostaTest.Size = new System.Drawing.Size(188, 21);
+            this.comboBox_RespostaTest.Size = new System.Drawing.Size(238, 21);
             this.comboBox_RespostaTest.TabIndex = 11;
             // 
             // button_Random
             // 
-            this.button_Random.Location = new System.Drawing.Point(234, 119);
+            this.button_Random.Location = new System.Drawing.Point(284, 115);
             this.button_Random.Name = "button_Random";
             this.button_Random.Size = new System.Drawing.Size(75, 23);
             this.button_Random.TabIndex = 12;
@@ -139,11 +140,22 @@
             this.button_Random.UseVisualStyleBackColor = true;
             this.button_Random.Click += new System.EventHandler(this.button_Random_Click);
             // 
+            // button_SendRabbitMq
+            // 
+            this.button_SendRabbitMq.Location = new System.Drawing.Point(96, 115);
+            this.button_SendRabbitMq.Name = "button_SendRabbitMq";
+            this.button_SendRabbitMq.Size = new System.Drawing.Size(98, 23);
+            this.button_SendRabbitMq.TabIndex = 13;
+            this.button_SendRabbitMq.Text = "Enviar RabbitMQ";
+            this.button_SendRabbitMq.UseVisualStyleBackColor = true;
+            this.button_SendRabbitMq.Click += new System.EventHandler(this.button_SendRabbitMq_Click);
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(333, 154);
+            this.ClientSize = new System.Drawing.Size(368, 150);
+            this.Controls.Add(this.button_SendRabbitMq);
             this.Controls.Add(this.button_Random);
             this.Controls.Add(this.comboBox_RespostaTest);
             this.Controls.Add(this.button_SendButton);
@@ -173,6 +185,7 @@
         private System.Windows.Forms.Button button_SendButton;
         private System.Windows.Forms.ComboBox comboBox_RespostaTest;
         private System.Windows.Forms.Button button_Random;
+        private System.Windows.Forms.Button button_SendRabbitMq;
     }
 }
 

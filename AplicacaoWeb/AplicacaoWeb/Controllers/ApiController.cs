@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Diagnostics;
 
 namespace AplicacaoWeb.Controllers
 {
@@ -10,15 +11,26 @@ namespace AplicacaoWeb.Controllers
     [Route("[controller]")]
     public class ApiController : ControllerBase
     {
-        
+        private readonly IConfiguration _configuration;
+
+        public ApiController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+
+
+
         [HttpGet("GetProductSP")]
         public ActionResult GetProductSP()
         {
             try
             {
+                Console.WriteLine("Ping2");
+                Debug.WriteLine("Ping2");
                 List<Produto> produto = new List<Produto>();
-
-                using (SqlConnection SistemaWebConnection = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True"))
+                var a = _configuration.GetConnectionString("SistemaWeb");
+                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
                     using (SqlCommand command = new SqlCommand("GetProduto", SistemaWebConnection))
                     {
@@ -54,7 +66,7 @@ namespace AplicacaoWeb.Controllers
             {
                 List<Testes> testes = new List<Testes>();
 
-                using (SqlConnection SistemaWebConnection = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True"))
+                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
                     using (SqlCommand command = new SqlCommand("GetTestes", SistemaWebConnection))
                     {
@@ -88,7 +100,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True"))
+                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
                     using (var command = new SqlCommand("Insercao", SistemaWebConnection))
                     {
@@ -118,7 +130,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True"))
+                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
                     using (SqlCommand command = new SqlCommand("AtualizacaoProduto", SistemaWebConnection))
                     {
@@ -148,7 +160,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True"))
+                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
                     using (SqlCommand command = new SqlCommand("AtualizacaoTestes", SistemaWebConnection))
                     {
@@ -178,7 +190,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True"))
+                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
                     using (SqlCommand command = new SqlCommand("RemocaoProduto", SistemaWebConnection))
                     {
@@ -209,7 +221,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=SistemaWeb;Trusted_Connection=True;TrustServerCertificate=True"))
+                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
                     using (SqlCommand command = new SqlCommand("RemocaoTestes", SistemaWebConnection))
                     {
