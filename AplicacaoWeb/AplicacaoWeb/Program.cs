@@ -1,17 +1,15 @@
-
-using AplicacaoWeb.Controllers;
+using AplicacaoWeb.Data;
+using AplicacaoWeb.Messaging;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //builder.Configuration.GetConnectionString("DefaultConnection");
-
-builder.Services.AddHostedService<RabbitMqConsumerService>();
-
+builder.Services.AddTransient<DataBaseCalls>();
 builder.Services.AddControllers()
     .AddXmlSerializerFormatters();
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHostedService<RabbitMqConsumerService>();
 
 var app = builder.Build();
 

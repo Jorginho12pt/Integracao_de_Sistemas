@@ -1,4 +1,5 @@
 ﻿using AplicacaoWeb.Models;
+using AplicacaoWeb.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -12,13 +13,13 @@ namespace AplicacaoWeb.Controllers
     public class ApiController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private DataBaseCalls _dataBaseCalls;
 
-        public ApiController(IConfiguration configuration)
+        public ApiController(IConfiguration configuration, DataBaseCalls dataBaseCalls)
         {
             _configuration = configuration;
+            _dataBaseCalls = dataBaseCalls;
         }
-
-
 
 
         [HttpGet("GetProductSP")]
@@ -26,32 +27,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                Console.WriteLine("Ping2");
-                Debug.WriteLine("Ping2");
-                List<Produto> produto = new List<Produto>();
-                var a = _configuration.GetConnectionString("SistemaWeb");
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
-                {
-                    using (SqlCommand command = new SqlCommand("GetProduto", SistemaWebConnection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        SistemaWebConnection.Open();
-                        SqlDataReader reader = command.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            Produto body = new Produto();
-                            body.IdProduto = Convert.ToInt32(reader["IdProduto"]);
-                            body.CodigoPeca = Convert.ToString(reader["CodigoPeca"]);
-                            body.DataHoraProducao = Convert.ToDateTime(reader["DataHoraProducao"]);
-                            body.TempoProducao = Convert.ToInt32(reader["TempoProducao"]);
-                            produto.Add(body);
-                        }
-                        SistemaWebConnection.Close();
-                    }
-                }
-
-                return Ok(produto);
+                return Ok(_dataBaseCalls.GetProductListSP());
             }
             catch (SqlException ex)
             {
@@ -64,30 +40,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                List<Testes> testes = new List<Testes>();
-
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
-                {
-                    using (SqlCommand command = new SqlCommand("GetTestes", SistemaWebConnection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        SistemaWebConnection.Open();
-                        SqlDataReader reader = command.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            Testes body = new Testes();
-                            body.IdTeste = Convert.ToInt32(reader["IdTeste"]);
-                            body.IdProduto = Convert.ToInt32(reader["IdProduto"]);
-                            body.CodigoResultado = Convert.ToInt32(reader["CodigoResultado"]);
-                            body.DataTeste = Convert.ToDateTime(reader["DataTeste"]);
-                            testes.Add(body);
-                        }
-                        SistemaWebConnection.Close();
-                    }
-                }
-
-                return Ok(testes);
+                return Ok(_dataBaseCalls.GetTestsListSP());
             }
             catch (SqlException ex)
             {
@@ -100,22 +53,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
-                {
-                    using (var command = new SqlCommand("Insercao", SistemaWebConnection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Add("@_DataHora", SqlDbType.DateTime2).Value = body.DataHora;
-                        command.Parameters.Add("@_CodigoPeca", SqlDbType.VarChar).Value = body.CodigoPeca;
-                        command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProducao;
-                        command.Parameters.Add("@_ResultadoTeste", SqlDbType.Int).Value = body.ResultadoTeste;
-
-                        SistemaWebConnection.Open();
-                        command.ExecuteNonQuery();
-                        SistemaWebConnection.Close();
-                    }
-                }
+                _dataBaseCalls.InsertTesteCallSP(body);
 
                 return Ok("Dados inseridos com sucesso!");
             }
