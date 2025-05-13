@@ -28,148 +28,154 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DataHora = new System.Windows.Forms.Label();
-            this.textBox_DataHora = new System.Windows.Forms.TextBox();
-            this.textBox_CodigoPreco = new System.Windows.Forms.TextBox();
-            this.CodigoPeca = new System.Windows.Forms.Label();
-            this.textBox_TempoProd = new System.Windows.Forms.TextBox();
-            this.TempoProducao = new System.Windows.Forms.Label();
-            this.RespostaTeste = new System.Windows.Forms.Label();
-            this.button_SendButton = new System.Windows.Forms.Button();
-            this.comboBox_RespostaTest = new System.Windows.Forms.ComboBox();
-            this.button_Random = new System.Windows.Forms.Button();
-            this.button_SendRabbitMq = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            DataHora = new System.Windows.Forms.Label();
+            textBox_DataHora = new System.Windows.Forms.TextBox();
+            textBox_CodigoPreco = new System.Windows.Forms.TextBox();
+            CodigoPeca = new System.Windows.Forms.Label();
+            textBox_TempoProd = new System.Windows.Forms.TextBox();
+            TempoProducao = new System.Windows.Forms.Label();
+            RespostaTeste = new System.Windows.Forms.Label();
+            button_SendButton = new System.Windows.Forms.Button();
+            comboBox_RespostaTest = new System.Windows.Forms.ComboBox();
+            button_Random = new System.Windows.Forms.Button();
+            button_SendRabbitMq = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // DataHora
             // 
-            this.DataHora.AutoSize = true;
-            this.DataHora.Location = new System.Drawing.Point(12, 13);
-            this.DataHora.Name = "DataHora";
-            this.DataHora.Size = new System.Drawing.Size(71, 13);
-            this.DataHora.TabIndex = 0;
-            this.DataHora.Text = "Data e Hora: ";
+            DataHora.AutoSize = true;
+            DataHora.Location = new System.Drawing.Point(14, 15);
+            DataHora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            DataHora.Name = "DataHora";
+            DataHora.Size = new System.Drawing.Size(75, 15);
+            DataHora.TabIndex = 0;
+            DataHora.Text = "Data e Hora: ";
             // 
             // textBox_DataHora
             // 
-            this.textBox_DataHora.Location = new System.Drawing.Point(89, 10);
-            this.textBox_DataHora.Name = "textBox_DataHora";
-            this.textBox_DataHora.ReadOnly = true;
-            this.textBox_DataHora.Size = new System.Drawing.Size(270, 20);
-            this.textBox_DataHora.TabIndex = 10;
-            this.textBox_DataHora.TabStop = false;
+            textBox_DataHora.Location = new System.Drawing.Point(104, 12);
+            textBox_DataHora.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_DataHora.Name = "textBox_DataHora";
+            textBox_DataHora.ReadOnly = true;
+            textBox_DataHora.Size = new System.Drawing.Size(314, 23);
+            textBox_DataHora.TabIndex = 10;
+            textBox_DataHora.TabStop = false;
             // 
             // textBox_CodigoPreco
             // 
-            this.textBox_CodigoPreco.Location = new System.Drawing.Point(107, 36);
-            this.textBox_CodigoPreco.MaxLength = 8;
-            this.textBox_CodigoPreco.Name = "textBox_CodigoPreco";
-            this.textBox_CodigoPreco.Size = new System.Drawing.Size(252, 20);
-            this.textBox_CodigoPreco.TabIndex = 1;
+            textBox_CodigoPreco.Location = new System.Drawing.Point(125, 42);
+            textBox_CodigoPreco.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_CodigoPreco.MaxLength = 8;
+            textBox_CodigoPreco.Name = "textBox_CodigoPreco";
+            textBox_CodigoPreco.Size = new System.Drawing.Size(293, 23);
+            textBox_CodigoPreco.TabIndex = 1;
             // 
             // CodigoPeca
             // 
-            this.CodigoPeca.AutoSize = true;
-            this.CodigoPeca.Location = new System.Drawing.Point(12, 39);
-            this.CodigoPeca.Name = "CodigoPeca";
-            this.CodigoPeca.Size = new System.Drawing.Size(89, 13);
-            this.CodigoPeca.TabIndex = 2;
-            this.CodigoPeca.Text = "Codigo da Peça: ";
+            CodigoPeca.AutoSize = true;
+            CodigoPeca.Location = new System.Drawing.Point(14, 45);
+            CodigoPeca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            CodigoPeca.Name = "CodigoPeca";
+            CodigoPeca.Size = new System.Drawing.Size(96, 15);
+            CodigoPeca.TabIndex = 2;
+            CodigoPeca.Text = "Codigo da Peça: ";
             // 
             // textBox_TempoProd
             // 
-            this.textBox_TempoProd.Location = new System.Drawing.Point(183, 62);
-            this.textBox_TempoProd.MaxLength = 2;
-            this.textBox_TempoProd.Name = "textBox_TempoProd";
-            this.textBox_TempoProd.Size = new System.Drawing.Size(176, 20);
-            this.textBox_TempoProd.TabIndex = 5;
+            textBox_TempoProd.Location = new System.Drawing.Point(214, 72);
+            textBox_TempoProd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_TempoProd.MaxLength = 2;
+            textBox_TempoProd.Name = "textBox_TempoProd";
+            textBox_TempoProd.Size = new System.Drawing.Size(205, 23);
+            textBox_TempoProd.TabIndex = 5;
             // 
             // TempoProducao
             // 
-            this.TempoProducao.AutoSize = true;
-            this.TempoProducao.Location = new System.Drawing.Point(12, 65);
-            this.TempoProducao.Name = "TempoProducao";
-            this.TempoProducao.Size = new System.Drawing.Size(165, 13);
-            this.TempoProducao.TabIndex = 4;
-            this.TempoProducao.Text = "Tempo de Produção (segundos): ";
-            this.TempoProducao.Click += new System.EventHandler(this.TempoProducao_Click);
+            TempoProducao.AutoSize = true;
+            TempoProducao.Location = new System.Drawing.Point(14, 75);
+            TempoProducao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            TempoProducao.Name = "TempoProducao";
+            TempoProducao.Size = new System.Drawing.Size(181, 15);
+            TempoProducao.TabIndex = 4;
+            TempoProducao.Text = "Tempo de Produção (segundos): ";
+            TempoProducao.Click += TempoProducao_Click;
             // 
             // RespostaTeste
             // 
-            this.RespostaTeste.AutoSize = true;
-            this.RespostaTeste.Location = new System.Drawing.Point(12, 91);
-            this.RespostaTeste.Name = "RespostaTeste";
-            this.RespostaTeste.Size = new System.Drawing.Size(103, 13);
-            this.RespostaTeste.TabIndex = 6;
-            this.RespostaTeste.Text = "Resposta do Teste: ";
+            RespostaTeste.AutoSize = true;
+            RespostaTeste.Location = new System.Drawing.Point(14, 105);
+            RespostaTeste.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            RespostaTeste.Name = "RespostaTeste";
+            RespostaTeste.Size = new System.Drawing.Size(106, 15);
+            RespostaTeste.TabIndex = 6;
+            RespostaTeste.Text = "Resposta do Teste: ";
             // 
             // button_SendButton
             // 
-            this.button_SendButton.Location = new System.Drawing.Point(15, 115);
-            this.button_SendButton.Name = "button_SendButton";
-            this.button_SendButton.Size = new System.Drawing.Size(75, 23);
-            this.button_SendButton.TabIndex = 8;
-            this.button_SendButton.Text = "Enviar";
-            this.button_SendButton.UseVisualStyleBackColor = true;
-            this.button_SendButton.Click += new System.EventHandler(this.button_SendButton_ClickAsync);
+            button_SendButton.Location = new System.Drawing.Point(18, 133);
+            button_SendButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            button_SendButton.Name = "button_SendButton";
+            button_SendButton.Size = new System.Drawing.Size(88, 27);
+            button_SendButton.TabIndex = 8;
+            button_SendButton.Text = "Enviar";
+            button_SendButton.UseVisualStyleBackColor = true;
+            button_SendButton.Click += button_SendButton_ClickAsync;
             // 
             // comboBox_RespostaTest
             // 
-            this.comboBox_RespostaTest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_RespostaTest.FormattingEnabled = true;
-            this.comboBox_RespostaTest.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.comboBox_RespostaTest.Items.AddRange(new object[] {
-            "Ok",
-            "Falha na inspecao visual",
-            "Falha na inspecao de resistencia",
-            "Falha na inspecao de dimensoes",
-            "Falha na inspecao de estanqueidade",
-            "Desconhecido"});
-            this.comboBox_RespostaTest.Location = new System.Drawing.Point(121, 88);
-            this.comboBox_RespostaTest.Name = "comboBox_RespostaTest";
-            this.comboBox_RespostaTest.Size = new System.Drawing.Size(238, 21);
-            this.comboBox_RespostaTest.TabIndex = 11;
+            comboBox_RespostaTest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBox_RespostaTest.FormattingEnabled = true;
+            comboBox_RespostaTest.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            comboBox_RespostaTest.Items.AddRange(new object[] { "Ok", "Falha na inspecao visual", "Falha na inspecao de resistencia", "Falha na inspecao de dimensoes", "Falha na inspecao de estanqueidade", "Desconhecido" });
+            comboBox_RespostaTest.Location = new System.Drawing.Point(141, 102);
+            comboBox_RespostaTest.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            comboBox_RespostaTest.Name = "comboBox_RespostaTest";
+            comboBox_RespostaTest.Size = new System.Drawing.Size(277, 23);
+            comboBox_RespostaTest.TabIndex = 11;
             // 
             // button_Random
             // 
-            this.button_Random.Location = new System.Drawing.Point(284, 115);
-            this.button_Random.Name = "button_Random";
-            this.button_Random.Size = new System.Drawing.Size(75, 23);
-            this.button_Random.TabIndex = 12;
-            this.button_Random.Text = "Random";
-            this.button_Random.UseVisualStyleBackColor = true;
-            this.button_Random.Click += new System.EventHandler(this.button_Random_Click);
+            button_Random.Location = new System.Drawing.Point(331, 133);
+            button_Random.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            button_Random.Name = "button_Random";
+            button_Random.Size = new System.Drawing.Size(88, 27);
+            button_Random.TabIndex = 12;
+            button_Random.Text = "Random";
+            button_Random.UseVisualStyleBackColor = true;
+            button_Random.Click += button_Random_Click;
             // 
             // button_SendRabbitMq
             // 
-            this.button_SendRabbitMq.Location = new System.Drawing.Point(96, 115);
-            this.button_SendRabbitMq.Name = "button_SendRabbitMq";
-            this.button_SendRabbitMq.Size = new System.Drawing.Size(98, 23);
-            this.button_SendRabbitMq.TabIndex = 13;
-            this.button_SendRabbitMq.Text = "Enviar RabbitMQ";
-            this.button_SendRabbitMq.UseVisualStyleBackColor = true;
-            this.button_SendRabbitMq.Click += new System.EventHandler(this.button_SendRabbitMq_Click);
+            button_SendRabbitMq.Location = new System.Drawing.Point(112, 133);
+            button_SendRabbitMq.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            button_SendRabbitMq.Name = "button_SendRabbitMq";
+            button_SendRabbitMq.Size = new System.Drawing.Size(114, 27);
+            button_SendRabbitMq.TabIndex = 13;
+            button_SendRabbitMq.Text = "Enviar RabbitMQ";
+            button_SendRabbitMq.UseVisualStyleBackColor = true;
+            button_SendRabbitMq.Click += button_SendRabbitMq_Click;
             // 
             // Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 150);
-            this.Controls.Add(this.button_SendRabbitMq);
-            this.Controls.Add(this.button_Random);
-            this.Controls.Add(this.comboBox_RespostaTest);
-            this.Controls.Add(this.button_SendButton);
-            this.Controls.Add(this.RespostaTeste);
-            this.Controls.Add(this.textBox_TempoProd);
-            this.Controls.Add(this.TempoProducao);
-            this.Controls.Add(this.textBox_CodigoPreco);
-            this.Controls.Add(this.CodigoPeca);
-            this.Controls.Add(this.textBox_DataHora);
-            this.Controls.Add(this.DataHora);
-            this.Name = "Form";
-            this.Text = "DesktopApp";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(429, 173);
+            Controls.Add(button_SendRabbitMq);
+            Controls.Add(button_Random);
+            Controls.Add(comboBox_RespostaTest);
+            Controls.Add(button_SendButton);
+            Controls.Add(RespostaTeste);
+            Controls.Add(textBox_TempoProd);
+            Controls.Add(TempoProducao);
+            Controls.Add(textBox_CodigoPreco);
+            Controls.Add(CodigoPeca);
+            Controls.Add(textBox_DataHora);
+            Controls.Add(DataHora);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "Form";
+            Text = "DesktopApp";
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
