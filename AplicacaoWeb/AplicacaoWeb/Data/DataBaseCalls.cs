@@ -14,12 +14,12 @@ namespace AplicacaoWeb.Data
             _configuration = configuration;
         }
 
-        public List<Produto> GetProductListSP()
+        public List<Produto> GetProductCallSP()
         {
             try
             {
                 List<Produto> produto = new List<Produto>();
-                var a = _configuration.GetConnectionString("SistemaWeb");
+
                 using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
                     using (SqlCommand command = new SqlCommand("GetProduto", SistemaWebConnection))
@@ -45,11 +45,11 @@ namespace AplicacaoWeb.Data
             }
             catch (SqlException ex)
             {
-                throw;
+                throw new Exception(ex.ToString());
             }
         }
 
-        public List<Testes> GetTestsListSP()
+        public List<Testes> GetTestsCallSP()
         {
             try
             {
@@ -80,7 +80,7 @@ namespace AplicacaoWeb.Data
             }
             catch (SqlException ex)
             {
-                throw;
+                throw new Exception(ex.ToString());
             }
         }
 
@@ -107,131 +107,118 @@ namespace AplicacaoWeb.Data
             }
             catch (SqlException ex)
             {
-                throw;
+                throw new Exception(ex.ToString());
             }
         }
 
-        //[HttpPut("UpdateProductSP")]
-        //public ActionResult UpdateProductSP([FromBody] Produto body)
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
-        //        {
-        //            using (SqlCommand command = new SqlCommand("AtualizacaoProduto", SistemaWebConnection))
-        //            {
-        //                command.CommandType = CommandType.StoredProcedure;
+      
+        public void UpdateProductCallSP([FromBody] Produto body)
+        {
+            try
+            {
+                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
+                {
+                    using (SqlCommand command = new SqlCommand("AtualizacaoProduto", SistemaWebConnection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
 
-        //                command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
-        //                command.Parameters.Add("@_CodigoPeca", SqlDbType.VarChar).Value = body.CodigoPeca;
-        //                command.Parameters.Add("@_DataHoraProducao", SqlDbType.DateTime2).Value = body.DataHoraProducao;
-        //                command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProducao;
+                        command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
+                        command.Parameters.Add("@_CodigoPeca", SqlDbType.VarChar).Value = body.CodigoPeca;
+                        command.Parameters.Add("@_DataHoraProducao", SqlDbType.DateTime2).Value = body.DataHoraProducao;
+                        command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProducao;
 
-        //                SistemaWebConnection.Open();
-        //                command.ExecuteNonQuery();
-        //                SistemaWebConnection.Close();
-        //            }
-        //        }
+                        SistemaWebConnection.Open();
+                        command.ExecuteNonQuery();
+                        SistemaWebConnection.Close();
+                    }
+                }       
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
 
-        //        return Ok("Update efetuado com sucesso!");
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        return BadRequest($"Erro no banco de dados: {ex.Message}");
-        //    }
-        //}
+        public void UpdateTestsCallSP([FromBody] Testes body)
+        {
+            try
+            {
+                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
+                {
+                    using (SqlCommand command = new SqlCommand("AtualizacaoTestes", SistemaWebConnection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
 
-        //[HttpPut("UpdateTestsSP")]
-        //public ActionResult UpdateTestsSP([FromBody] Testes body)
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
-        //        {
-        //            using (SqlCommand command = new SqlCommand("AtualizacaoTestes", SistemaWebConnection))
-        //            {
-        //                command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@_IdTeste", SqlDbType.Int).Value = body.IdTeste;
+                        command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
+                        command.Parameters.Add("@_CodigoResultado", SqlDbType.Int).Value = body.CodigoResultado;
+                        command.Parameters.Add("@_DataTeste", SqlDbType.DateTime2).Value = body.DataTeste;
 
-        //                command.Parameters.Add("@_IdTeste", SqlDbType.Int).Value = body.IdTeste;
-        //                command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
-        //                command.Parameters.Add("@_CodigoResultado", SqlDbType.Int).Value = body.CodigoResultado;
-        //                command.Parameters.Add("@_DataTeste", SqlDbType.DateTime2).Value = body.DataTeste;
+                        SistemaWebConnection.Open();
+                        command.ExecuteNonQuery();
+                        SistemaWebConnection.Close();
+                    }
+                }   
+            }
+            catch (SqlException ex)
+            {
+               throw new Exception(ex.ToString());
+            }
+        }
 
-        //                SistemaWebConnection.Open();
-        //                command.ExecuteNonQuery();
-        //                SistemaWebConnection.Close();
-        //            }
-        //        }
+        public void RemoveProductCallSP([FromBody] Produto body)
+        {
+            try
+            {
+                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
+                {
+                    using (SqlCommand command = new SqlCommand("RemocaoProduto", SistemaWebConnection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
 
-        //        return Ok("Update efetuado com sucesso!");
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        return BadRequest($"Erro no banco de dados: {ex.Message}");
-        //    }
-        //}
+                        command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
+                        command.Parameters.Add("@_CodigoPeca", SqlDbType.VarChar).Value = body.CodigoPeca;
+                        command.Parameters.Add("@_DataHoraProducao", SqlDbType.DateTime2).Value = body.DataHoraProducao;
+                        command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProducao;
 
-        //[HttpDelete("RemoveProductSP")]
-        //public ActionResult RemoveProductSP([FromBody] Produto body)
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
-        //        {
-        //            using (SqlCommand command = new SqlCommand("RemocaoProduto", SistemaWebConnection))
-        //            {
-        //                command.CommandType = CommandType.StoredProcedure;
+                        SistemaWebConnection.Open();
+                        command.ExecuteNonQuery();
+                        SistemaWebConnection.Close();
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
 
-        //                command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
-        //                command.Parameters.Add("@_CodigoPeca", SqlDbType.VarChar).Value = body.CodigoPeca;
-        //                command.Parameters.Add("@_DataHoraProducao", SqlDbType.DateTime2).Value = body.DataHoraProducao;
-        //                command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProducao;
+        public void RemoveTestsCallSP([FromBody] Testes body)
+        {
+            try
+            {
+                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
+                {
+                    using (SqlCommand command = new SqlCommand("RemocaoTestes", SistemaWebConnection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
 
-        //                SistemaWebConnection.Open();
-        //                command.ExecuteNonQuery();
-        //                SistemaWebConnection.Close();
+                        command.Parameters.Add("@_IdTeste", SqlDbType.Int).Value = body.IdTeste;
+                        command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
+                        command.Parameters.Add("@_CodigoResultado", SqlDbType.Int).Value = body.CodigoResultado;
+                        command.Parameters.Add("@_DataTeste", SqlDbType.DateTime2).Value = body.DataTeste;
 
-        //            }
-        //        }
+                        SistemaWebConnection.Open();
+                        command.ExecuteNonQuery();
+                        SistemaWebConnection.Close();
 
-        //        return Ok("Aluno eliminado com sucesso");
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        return BadRequest($"Erro no banco de dados: {ex.Message}");
-        //    }
-        //}
-
-        //[HttpDelete("RemoveTestsSP")]
-        //public ActionResult RemoveTestsSP([FromBody] Testes body)
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
-        //        {
-        //            using (SqlCommand command = new SqlCommand("RemocaoTestes", SistemaWebConnection))
-        //            {
-        //                command.CommandType = CommandType.StoredProcedure;
-
-        //                command.Parameters.Add("@_IdTeste", SqlDbType.Int).Value = body.IdTeste;
-        //                command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
-        //                command.Parameters.Add("@_CodigoResultado", SqlDbType.Int).Value = body.CodigoResultado;
-        //                command.Parameters.Add("@_DataTeste", SqlDbType.DateTime2).Value = body.DataTeste;
-
-        //                SistemaWebConnection.Open();
-        //                command.ExecuteNonQuery();
-        //                SistemaWebConnection.Close();
-
-        //            }
-        //        }
-
-        //        return Ok("Aluno eliminado com sucesso");
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        return BadRequest($"Erro no banco de dados: {ex.Message}");
-        //    }
-        //}
-
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
     }
 }

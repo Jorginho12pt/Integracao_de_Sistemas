@@ -18,7 +18,7 @@ http://localhost:15672/
 
 ------------Perceber RabbitMQ-------------
 basico: https://www.youtube.com/watch?v=sN5YpfOpCHA
-Crirar Consumidor de mensaguens: https://www.youtube.com/watch?v=XA_3CZmD9y0
+Crirar loop para Consumidor as mensaguens: https://www.youtube.com/watch?v=XA_3CZmD9y0
 
 
 

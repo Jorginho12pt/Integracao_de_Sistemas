@@ -27,7 +27,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                return Ok(_dataBaseCalls.GetProductListSP());
+                return Ok(_dataBaseCalls.GetProductCallSP());
             }
             catch (SqlException ex)
             {
@@ -40,7 +40,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                return Ok(_dataBaseCalls.GetTestsListSP());
+                return Ok(_dataBaseCalls.GetTestsCallSP());
             }
             catch (SqlException ex)
             {
@@ -68,22 +68,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
-                {
-                    using (SqlCommand command = new SqlCommand("AtualizacaoProduto", SistemaWebConnection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
-                        command.Parameters.Add("@_CodigoPeca", SqlDbType.VarChar).Value = body.CodigoPeca;
-                        command.Parameters.Add("@_DataHoraProducao", SqlDbType.DateTime2).Value = body.DataHoraProducao;
-                        command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProducao;
-
-                        SistemaWebConnection.Open();
-                        command.ExecuteNonQuery();
-                        SistemaWebConnection.Close();
-                    }
-                }
+                _dataBaseCalls.UpdateProductCallSP(body);
 
                 return Ok("Update efetuado com sucesso!");
             }
@@ -98,22 +83,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
-                {
-                    using (SqlCommand command = new SqlCommand("AtualizacaoTestes", SistemaWebConnection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Add("@_IdTeste", SqlDbType.Int).Value = body.IdTeste;
-                        command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
-                        command.Parameters.Add("@_CodigoResultado", SqlDbType.Int).Value = body.CodigoResultado;
-                        command.Parameters.Add("@_DataTeste", SqlDbType.DateTime2).Value = body.DataTeste;
-
-                        SistemaWebConnection.Open();
-                        command.ExecuteNonQuery();
-                        SistemaWebConnection.Close();
-                    }
-                }
+                _dataBaseCalls.UpdateTestsCallSP(body);
 
                 return Ok("Update efetuado com sucesso!");
             }
@@ -128,23 +98,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
-                {
-                    using (SqlCommand command = new SqlCommand("RemocaoProduto", SistemaWebConnection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
-                        command.Parameters.Add("@_CodigoPeca", SqlDbType.VarChar).Value = body.CodigoPeca;
-                        command.Parameters.Add("@_DataHoraProducao", SqlDbType.DateTime2).Value = body.DataHoraProducao;
-                        command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProducao;
-
-                        SistemaWebConnection.Open();
-                        command.ExecuteNonQuery();
-                        SistemaWebConnection.Close();
-                        
-                    }
-                }
+                _dataBaseCalls.RemoveProductCallSP(body);
 
                 return Ok("Aluno eliminado com sucesso");
             }
@@ -159,23 +113,7 @@ namespace AplicacaoWeb.Controllers
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
-                {
-                    using (SqlCommand command = new SqlCommand("RemocaoTestes", SistemaWebConnection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Add("@_IdTeste", SqlDbType.Int).Value = body.IdTeste;
-                        command.Parameters.Add("@_IdProduto", SqlDbType.Int).Value = body.IdProduto;
-                        command.Parameters.Add("@_CodigoResultado", SqlDbType.Int).Value = body.CodigoResultado;
-                        command.Parameters.Add("@_DataTeste", SqlDbType.DateTime2).Value = body.DataTeste;
-
-                        SistemaWebConnection.Open();
-                        command.ExecuteNonQuery();
-                        SistemaWebConnection.Close();
-
-                    }
-                }
+                _dataBaseCalls.RemoveTestsCallSP(body);
 
                 return Ok("Aluno eliminado com sucesso");
             }
