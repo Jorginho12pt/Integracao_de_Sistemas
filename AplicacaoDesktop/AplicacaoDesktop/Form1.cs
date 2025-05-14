@@ -7,13 +7,16 @@ using static AplicacaoDesktop.EnumEx;
 using Newtonsoft.Json;
 using System.Text;
 using RabbitMQ.Client;
-using RabbitMQ.Client;
-using System.Text;
+using RabbitMQ.Stream.Client;
+using RabbitMQ.Stream.Client.Reliable;
 using System.Diagnostics;
+using System.Net;
+using System.Collections.Generic;
+
 
 namespace AplicacaoDesktop
 {
-    public partial class Form: System.Windows.Forms.Form
+    public partial class Form : System.Windows.Forms.Form
     {
         public Form()
         {
@@ -58,16 +61,11 @@ namespace AplicacaoDesktop
                     MessageBox.Show("Error: " + r.Message);
                 }
             }
-            
+
             textBox_DataHora.Text = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
             textBox_CodigoPreco.Text = "";
             textBox_TempoProd.Text = "";
             comboBox_RespostaTest.SelectedIndex = -1;
-        }
-
-        private void TempoProducao_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button_Random_Click(object sender, EventArgs e)
@@ -77,7 +75,7 @@ namespace AplicacaoDesktop
             const string chars2 = "123456789";
 
             textBox_DataHora.Text = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
-            textBox_CodigoPreco.Text = new string(Enumerable.Repeat(chars, 2).Select(s => s[random.Next(s.Length)]).ToArray()) 
+            textBox_CodigoPreco.Text = new string(Enumerable.Repeat(chars, 2).Select(s => s[random.Next(s.Length)]).ToArray())
                 + new string(Enumerable.Repeat(chars2, 6).Select(s => s[random.Next(s.Length)]).ToArray());
             textBox_TempoProd.Text = random.Next(10, 51).ToString();
             comboBox_RespostaTest.SelectedIndex = random.Next(6);
@@ -85,7 +83,8 @@ namespace AplicacaoDesktop
 
         private async void button_SendRabbitMq_Click(object sender, EventArgs e)
         {
-            var factory = new ConnectionFactory {
+            var factory = new ConnectionFactory
+            {
                 HostName = "localhost",
                 Port = 5672,
                 UserName = "guest",
@@ -108,6 +107,28 @@ namespace AplicacaoDesktop
             await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "AplicacaoWeb", body: body);
 
             Debug.WriteLine($"{json}");
+        }
+
+        private async void button_SendRabbitMqStream_Click(object sender, EventArgs e)
+        {
+            var streamSystem = await StreamSystem.Create(new StreamSystemConfig
+            {
+                UserName = "guest",
+                Password = "guest",
+                Endpoints = new List<EndPoint>() {
+                    new IPEndPoint(IPAddress.Loopback, 5552)
+                },
+                VirtualHost = "/"
+            });
+
+            await streamSystem.CreateStream(new StreamSpec("Manager-Stream")
+            {
+                MaxLengthBytes = 5_000_000_000
+            });
+
+            var producer = await Producer.Create(new ProducerConfig(streamSystem, "Manager-Stream"));
+
+            await producer.Send(new RabbitMQ.Stream.Client.Message(Encoding.UTF8.GetBytes($"Hello1, World2")));
         }
     }
 }

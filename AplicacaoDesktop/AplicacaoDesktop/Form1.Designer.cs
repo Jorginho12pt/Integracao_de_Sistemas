@@ -39,6 +39,7 @@
             comboBox_RespostaTest = new System.Windows.Forms.ComboBox();
             button_Random = new System.Windows.Forms.Button();
             button_SendRabbitMq = new System.Windows.Forms.Button();
+            button_SendRabbitMqStream = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
             // DataHora
@@ -57,7 +58,7 @@
             textBox_DataHora.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox_DataHora.Name = "textBox_DataHora";
             textBox_DataHora.ReadOnly = true;
-            textBox_DataHora.Size = new System.Drawing.Size(314, 23);
+            textBox_DataHora.Size = new System.Drawing.Size(408, 23);
             textBox_DataHora.TabIndex = 10;
             textBox_DataHora.TabStop = false;
             // 
@@ -67,7 +68,7 @@
             textBox_CodigoPreco.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox_CodigoPreco.MaxLength = 8;
             textBox_CodigoPreco.Name = "textBox_CodigoPreco";
-            textBox_CodigoPreco.Size = new System.Drawing.Size(293, 23);
+            textBox_CodigoPreco.Size = new System.Drawing.Size(387, 23);
             textBox_CodigoPreco.TabIndex = 1;
             // 
             // CodigoPeca
@@ -86,7 +87,7 @@
             textBox_TempoProd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             textBox_TempoProd.MaxLength = 2;
             textBox_TempoProd.Name = "textBox_TempoProd";
-            textBox_TempoProd.Size = new System.Drawing.Size(205, 23);
+            textBox_TempoProd.Size = new System.Drawing.Size(298, 23);
             textBox_TempoProd.TabIndex = 5;
             // 
             // TempoProducao
@@ -95,10 +96,9 @@
             TempoProducao.Location = new System.Drawing.Point(14, 75);
             TempoProducao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             TempoProducao.Name = "TempoProducao";
-            TempoProducao.Size = new System.Drawing.Size(181, 15);
+            TempoProducao.Size = new System.Drawing.Size(182, 15);
             TempoProducao.TabIndex = 4;
             TempoProducao.Text = "Tempo de Produção (segundos): ";
-            TempoProducao.Click += TempoProducao_Click;
             // 
             // RespostaTeste
             // 
@@ -106,7 +106,7 @@
             RespostaTeste.Location = new System.Drawing.Point(14, 105);
             RespostaTeste.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             RespostaTeste.Name = "RespostaTeste";
-            RespostaTeste.Size = new System.Drawing.Size(106, 15);
+            RespostaTeste.Size = new System.Drawing.Size(107, 15);
             RespostaTeste.TabIndex = 6;
             RespostaTeste.Text = "Resposta do Teste: ";
             // 
@@ -130,12 +130,12 @@
             comboBox_RespostaTest.Location = new System.Drawing.Point(141, 102);
             comboBox_RespostaTest.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             comboBox_RespostaTest.Name = "comboBox_RespostaTest";
-            comboBox_RespostaTest.Size = new System.Drawing.Size(277, 23);
+            comboBox_RespostaTest.Size = new System.Drawing.Size(371, 23);
             comboBox_RespostaTest.TabIndex = 11;
             // 
             // button_Random
             // 
-            button_Random.Location = new System.Drawing.Point(331, 133);
+            button_Random.Location = new System.Drawing.Point(424, 131);
             button_Random.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             button_Random.Name = "button_Random";
             button_Random.Size = new System.Drawing.Size(88, 27);
@@ -155,11 +155,23 @@
             button_SendRabbitMq.UseVisualStyleBackColor = true;
             button_SendRabbitMq.Click += button_SendRabbitMq_Click;
             // 
+            // button_SendRabbitMqStream
+            // 
+            button_SendRabbitMqStream.Location = new System.Drawing.Point(234, 133);
+            button_SendRabbitMqStream.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            button_SendRabbitMqStream.Name = "button_SendRabbitMqStream";
+            button_SendRabbitMqStream.Size = new System.Drawing.Size(146, 27);
+            button_SendRabbitMqStream.TabIndex = 14;
+            button_SendRabbitMqStream.Text = "Enviar RabbitMQ Stream";
+            button_SendRabbitMqStream.UseVisualStyleBackColor = true;
+            button_SendRabbitMqStream.Click += button_SendRabbitMqStream_Click;
+            // 
             // Form
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(429, 173);
+            ClientSize = new System.Drawing.Size(525, 173);
+            Controls.Add(button_SendRabbitMqStream);
             Controls.Add(button_SendRabbitMq);
             Controls.Add(button_Random);
             Controls.Add(comboBox_RespostaTest);
@@ -192,6 +204,7 @@
         private System.Windows.Forms.ComboBox comboBox_RespostaTest;
         private System.Windows.Forms.Button button_Random;
         private System.Windows.Forms.Button button_SendRabbitMq;
+        private System.Windows.Forms.Button button_SendRabbitMqStream;
     }
 }
 

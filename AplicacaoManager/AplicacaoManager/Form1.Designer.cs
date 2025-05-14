@@ -144,6 +144,7 @@
 
         #endregion
 
+        
         private System.Windows.Forms.Label label_PecasProduzidas;
         private System.Windows.Forms.TextBox textBox_PecasProduzidas;
         private System.Windows.Forms.TextBox textBox_PecasSemFalhas;

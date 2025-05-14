@@ -1,7 +1,5 @@
-﻿using AplicacaoWeb.Controllers;
-using AplicacaoWeb.Data;
+﻿using AplicacaoWeb.Data;
 using AplicacaoWeb.Models;
-using Microsoft.Extensions.Configuration;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Diagnostics;

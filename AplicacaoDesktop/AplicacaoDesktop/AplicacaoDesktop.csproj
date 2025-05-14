@@ -43,6 +43,7 @@
     <PackageReference Include="Microsoft.Extensions.Primitives" />
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="RabbitMQ.Client" />
+    <PackageReference Include="RabbitMQ.Stream.Client" />
     <PackageReference Include="System.ComponentModel.Composition" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" />
     <PackageReference Include="System.IO.Pipelines" />
