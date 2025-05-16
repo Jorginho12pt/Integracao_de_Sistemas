@@ -13,6 +13,13 @@ namespace AplicacaoManager.Messaging
 {
     public class RabbitMqStreamConsumerService : BackgroundService
     {
+        private readonly Form1 _form;
+
+        public RabbitMqStreamConsumerService(Form1 form)
+        {
+            _form = form;
+        }
+
         protected async override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var streamSystem = await StreamSystem.Create(new StreamSystemConfig
@@ -35,8 +42,10 @@ namespace AplicacaoManager.Messaging
                 OffsetSpec = new OffsetTypeFirst(),
                 MessageHandler = async (stream, _, _, message) =>
                 {
-                    Debug.WriteLine($"Stream: {stream} - " +
-                                      $"Received message: {Encoding.UTF8.GetString(message.Data.Contents)}");
+                    _form.AddData(Encoding.UTF8.GetString(message.Data.Contents));
+
+                    Debug.WriteLine($"Stream: {stream} - " + $"Received message: {Encoding.UTF8.GetString(message.Data.Contents)}");
+
                     await Task.CompletedTask;
                 }
             });

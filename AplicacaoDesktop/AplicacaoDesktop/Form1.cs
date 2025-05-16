@@ -26,13 +26,22 @@ namespace AplicacaoDesktop
 
         private string getFormInformationJsonSerializeObject()
         {
-            DesktopTeste teste = new DesktopTeste();
-            teste.DataHora = DateTime.Parse(textBox_DataHora.Text);
-            teste.CodigoPeca = textBox_CodigoPreco.Text;
+            DesktopTeste info = new DesktopTeste();
+            info.DataHora = DateTime.Parse(textBox_DataHora.Text);
+            info.CodigoPeca = textBox_CodigoPreco.Text;
 
-            teste.TempoProducao = int.Parse(textBox_TempoProd.Text);
-            teste.ResultadoTeste = GetValueFromDescription<Resposta>(comboBox_RespostaTest.Text);
-            return JsonConvert.SerializeObject(teste);
+            info.TempoProducao = int.Parse(textBox_TempoProd.Text);
+            info.ResultadoTeste = GetValueFromDescription<Resposta>(comboBox_RespostaTest.Text);
+            return JsonConvert.SerializeObject(info);
+        }
+
+        private string getFormInformationString()
+        {
+            string info = textBox_DataHora.Text + ";"
+                + textBox_CodigoPreco.Text + ";"
+                + textBox_TempoProd.Text + ";"
+                + GetValueFromDescription<Resposta>(comboBox_RespostaTest.Text).ToString();
+            return info;
         }
 
         private async void button_SendButton_ClickAsync(object sender, EventArgs e)
@@ -128,7 +137,7 @@ namespace AplicacaoDesktop
 
             var producer = await Producer.Create(new ProducerConfig(streamSystem, "Manager-Stream"));
 
-            await producer.Send(new RabbitMQ.Stream.Client.Message(Encoding.UTF8.GetBytes($"Hello1, World2")));
+            await producer.Send(new RabbitMQ.Stream.Client.Message(Encoding.UTF8.GetBytes(getFormInformationString())));
         }
     }
 }

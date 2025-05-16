@@ -17,6 +17,9 @@ namespace AplicacaoManager
         [STAThread]
         static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             var host = Host.CreateDefaultBuilder()
             .ConfigureServices(services =>
             {
@@ -27,8 +30,7 @@ namespace AplicacaoManager
 
             host.Start();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            
             var form = host.Services.GetRequiredService<Form1>();
             Application.Run(form);
 
