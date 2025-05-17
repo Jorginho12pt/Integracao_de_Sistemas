@@ -14,7 +14,7 @@ namespace AplicacaoManager
     public partial class Form1 : Form
     {
         private int PecasProduzidas = 0;
-        private int PecasSemFalhas =0;
+        private int PecasSemFalhas = 0;
         private int PecasOk = 0;
         private List<int> MedioCalc = new List<int>();
         private List<int> TempoMedioProducao = new List<int>();
@@ -23,7 +23,7 @@ namespace AplicacaoManager
         public Form1()
         {
             InitializeComponent();
-            MedioCalc.Add(0);
+            MedioCalc.Add(1);
             TempoMedioProducao.Add(0);
             CodigoPeca.Add("");
             PopulateForm();
@@ -31,12 +31,23 @@ namespace AplicacaoManager
 
         private void PopulateForm()
         {
-            textBox_PecasProduzidas.Text = PecasProduzidas.ToString();
-            textBox_PecasSemFalhas.Text = PecasSemFalhas.ToString();
-            textBox_PecasOk.Text = PecasOk.ToString();
-            // adicionar na list box e dar clear 
-            //textBox_TempoMedioProducao.Text = TempoMedioProducao[0].ToString();
-            //comboBox_TempoMedioProducao.Items
+            SafeUIInvoke(() =>
+            {
+                textBox_PecasProduzidas.Text = PecasProduzidas.ToString();
+                textBox_PecasSemFalhas.Text = PecasSemFalhas.ToString();
+                textBox_PecasOk.Text = PecasOk.ToString();
+                textBox_TempoMedioProducao.Text =
+                    (Math.Round((decimal)TempoMedioProducao[comboBox_TempoMedioProducao.SelectedIndex + 1]
+                    / MedioCalc[comboBox_TempoMedioProducao.SelectedIndex + 1], 3)).ToString();
+            });
+        }
+
+        private void SafeUIInvoke(Action action)
+        {
+            if (InvokeRequired)
+                Invoke(action);
+            else
+                action();
         }
 
         public void AddData(string message)
@@ -55,7 +66,7 @@ namespace AplicacaoManager
             }
 
             PecasProduzidas++;
-            if ((parts[3]=="1") || (parts[3] == "6"))
+            if ((parts[3] == "1") || (parts[3] == "6"))
             {
                 PecasSemFalhas++;
 
@@ -74,11 +85,7 @@ namespace AplicacaoManager
                     if (parts[1] == CodigoPeca[i])
                     {
                         MedioCalc[i]++;
-                        TempoMedioProducao[i] = TempoMedioProducao[i] + int.Parse(parts[1]);
-                        if (comboBox_TempoMedioProducao.Text == parts[1])
-                        {
-                            textBox_TempoMedioProducao.Text = (Math.Round((decimal)TempoMedioProducao[i] / MedioCalc[i], 3)).ToString();
-                        }
+                        TempoMedioProducao[i] = TempoMedioProducao[i] + int.Parse(parts[2]);
                         flag = false;
                         break;
                     }
@@ -89,14 +96,29 @@ namespace AplicacaoManager
                     MedioCalc.Add(1);
                     TempoMedioProducao.Add(int.Parse(parts[2]));
                     CodigoPeca.Add(parts[1]);
+                    SafeUIInvoke(() =>
+                    {
+                        comboBox_TempoMedioProducao.Items.Add(parts[1]);
+                    });
                 }
 
                 PopulateForm();
             }
-            else {
+            else
+            {
                 MessageBox.Show("Rafa para de brincar!", "Erro nas Listas",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void comboBox_TempoMedioProducao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SafeUIInvoke(() =>
+            {
+                textBox_TempoMedioProducao.Text =
+                    (Math.Round((decimal)TempoMedioProducao[comboBox_TempoMedioProducao.SelectedIndex + 1]
+                    / MedioCalc[comboBox_TempoMedioProducao.SelectedIndex + 1], 3)).ToString();
+            });
         }
     }
 }

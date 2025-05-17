@@ -28,123 +28,134 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label_PecasProduzidas = new System.Windows.Forms.Label();
-            this.textBox_PecasProduzidas = new System.Windows.Forms.TextBox();
-            this.textBox_PecasSemFalhas = new System.Windows.Forms.TextBox();
-            this.label_PecasSemFalhas = new System.Windows.Forms.Label();
-            this.textBox_PecasOk = new System.Windows.Forms.TextBox();
-            this.label_PecasOk = new System.Windows.Forms.Label();
-            this.textBox_TempoMedioProducao = new System.Windows.Forms.TextBox();
-            this.label_TempoMedioProducao = new System.Windows.Forms.Label();
-            this.comboBox_TempoMedioProducao = new System.Windows.Forms.ComboBox();
-            this.SuspendLayout();
+            label_PecasProduzidas = new System.Windows.Forms.Label();
+            textBox_PecasProduzidas = new System.Windows.Forms.TextBox();
+            textBox_PecasSemFalhas = new System.Windows.Forms.TextBox();
+            label_PecasSemFalhas = new System.Windows.Forms.Label();
+            textBox_PecasOk = new System.Windows.Forms.TextBox();
+            label_PecasOk = new System.Windows.Forms.Label();
+            textBox_TempoMedioProducao = new System.Windows.Forms.TextBox();
+            label_TempoMedioProducao = new System.Windows.Forms.Label();
+            comboBox_TempoMedioProducao = new System.Windows.Forms.ComboBox();
+            SuspendLayout();
             // 
             // label_PecasProduzidas
             // 
-            this.label_PecasProduzidas.AutoSize = true;
-            this.label_PecasProduzidas.Location = new System.Drawing.Point(12, 9);
-            this.label_PecasProduzidas.Name = "label_PecasProduzidas";
-            this.label_PecasProduzidas.Size = new System.Drawing.Size(94, 13);
-            this.label_PecasProduzidas.TabIndex = 0;
-            this.label_PecasProduzidas.Text = "Pecas produzidas:";
+            label_PecasProduzidas.AutoSize = true;
+            label_PecasProduzidas.Location = new System.Drawing.Point(14, 10);
+            label_PecasProduzidas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label_PecasProduzidas.Name = "label_PecasProduzidas";
+            label_PecasProduzidas.Size = new System.Drawing.Size(101, 15);
+            label_PecasProduzidas.TabIndex = 0;
+            label_PecasProduzidas.Text = "Pecas produzidas:";
             // 
             // textBox_PecasProduzidas
             // 
-            this.textBox_PecasProduzidas.Location = new System.Drawing.Point(109, 6);
-            this.textBox_PecasProduzidas.Name = "textBox_PecasProduzidas";
-            this.textBox_PecasProduzidas.ReadOnly = true;
-            this.textBox_PecasProduzidas.Size = new System.Drawing.Size(100, 20);
-            this.textBox_PecasProduzidas.TabIndex = 1;
-            this.textBox_PecasProduzidas.TabStop = false;
+            textBox_PecasProduzidas.Location = new System.Drawing.Point(127, 7);
+            textBox_PecasProduzidas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_PecasProduzidas.Name = "textBox_PecasProduzidas";
+            textBox_PecasProduzidas.ReadOnly = true;
+            textBox_PecasProduzidas.Size = new System.Drawing.Size(116, 23);
+            textBox_PecasProduzidas.TabIndex = 1;
+            textBox_PecasProduzidas.TabStop = false;
             // 
             // textBox_PecasSemFalhas
             // 
-            this.textBox_PecasSemFalhas.Location = new System.Drawing.Point(314, 6);
-            this.textBox_PecasSemFalhas.Name = "textBox_PecasSemFalhas";
-            this.textBox_PecasSemFalhas.ReadOnly = true;
-            this.textBox_PecasSemFalhas.Size = new System.Drawing.Size(100, 20);
-            this.textBox_PecasSemFalhas.TabIndex = 3;
-            this.textBox_PecasSemFalhas.TabStop = false;
+            textBox_PecasSemFalhas.Location = new System.Drawing.Point(366, 7);
+            textBox_PecasSemFalhas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_PecasSemFalhas.Name = "textBox_PecasSemFalhas";
+            textBox_PecasSemFalhas.ReadOnly = true;
+            textBox_PecasSemFalhas.Size = new System.Drawing.Size(116, 23);
+            textBox_PecasSemFalhas.TabIndex = 3;
+            textBox_PecasSemFalhas.TabStop = false;
             // 
             // label_PecasSemFalhas
             // 
-            this.label_PecasSemFalhas.AutoSize = true;
-            this.label_PecasSemFalhas.Location = new System.Drawing.Point(215, 9);
-            this.label_PecasSemFalhas.Name = "label_PecasSemFalhas";
-            this.label_PecasSemFalhas.Size = new System.Drawing.Size(93, 13);
-            this.label_PecasSemFalhas.TabIndex = 2;
-            this.label_PecasSemFalhas.Text = "Pecas sem falhas:";
+            label_PecasSemFalhas.AutoSize = true;
+            label_PecasSemFalhas.Location = new System.Drawing.Point(251, 10);
+            label_PecasSemFalhas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label_PecasSemFalhas.Name = "label_PecasSemFalhas";
+            label_PecasSemFalhas.Size = new System.Drawing.Size(99, 15);
+            label_PecasSemFalhas.TabIndex = 2;
+            label_PecasSemFalhas.Text = "Pecas sem falhas:";
             // 
             // textBox_PecasOk
             // 
-            this.textBox_PecasOk.Location = new System.Drawing.Point(483, 6);
-            this.textBox_PecasOk.Name = "textBox_PecasOk";
-            this.textBox_PecasOk.ReadOnly = true;
-            this.textBox_PecasOk.Size = new System.Drawing.Size(100, 20);
-            this.textBox_PecasOk.TabIndex = 5;
-            this.textBox_PecasOk.TabStop = false;
+            textBox_PecasOk.Location = new System.Drawing.Point(564, 7);
+            textBox_PecasOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_PecasOk.Name = "textBox_PecasOk";
+            textBox_PecasOk.ReadOnly = true;
+            textBox_PecasOk.Size = new System.Drawing.Size(116, 23);
+            textBox_PecasOk.TabIndex = 5;
+            textBox_PecasOk.TabStop = false;
             // 
             // label_PecasOk
             // 
-            this.label_PecasOk.AutoSize = true;
-            this.label_PecasOk.Location = new System.Drawing.Point(420, 9);
-            this.label_PecasOk.Name = "label_PecasOk";
-            this.label_PecasOk.Size = new System.Drawing.Size(57, 13);
-            this.label_PecasOk.TabIndex = 4;
-            this.label_PecasOk.Text = "Pecas Ok:";
+            label_PecasOk.AutoSize = true;
+            label_PecasOk.Location = new System.Drawing.Point(490, 10);
+            label_PecasOk.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label_PecasOk.Name = "label_PecasOk";
+            label_PecasOk.Size = new System.Drawing.Size(58, 15);
+            label_PecasOk.TabIndex = 4;
+            label_PecasOk.Text = "Pecas Ok:";
             // 
             // textBox_TempoMedioProducao
             // 
-            this.textBox_TempoMedioProducao.Location = new System.Drawing.Point(314, 53);
-            this.textBox_TempoMedioProducao.Name = "textBox_TempoMedioProducao";
-            this.textBox_TempoMedioProducao.ReadOnly = true;
-            this.textBox_TempoMedioProducao.Size = new System.Drawing.Size(100, 20);
-            this.textBox_TempoMedioProducao.TabIndex = 7;
-            this.textBox_TempoMedioProducao.TabStop = false;
+            textBox_TempoMedioProducao.Location = new System.Drawing.Point(366, 61);
+            textBox_TempoMedioProducao.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            textBox_TempoMedioProducao.Name = "textBox_TempoMedioProducao";
+            textBox_TempoMedioProducao.ReadOnly = true;
+            textBox_TempoMedioProducao.Size = new System.Drawing.Size(116, 23);
+            textBox_TempoMedioProducao.TabIndex = 7;
+            textBox_TempoMedioProducao.TabStop = false;
             // 
             // label_TempoMedioProducao
             // 
-            this.label_TempoMedioProducao.AutoSize = true;
-            this.label_TempoMedioProducao.Location = new System.Drawing.Point(12, 57);
-            this.label_TempoMedioProducao.Name = "label_TempoMedioProducao";
-            this.label_TempoMedioProducao.Size = new System.Drawing.Size(137, 13);
-            this.label_TempoMedioProducao.TabIndex = 6;
-            this.label_TempoMedioProducao.Text = "Tempo medio de producao:";
+            label_TempoMedioProducao.AutoSize = true;
+            label_TempoMedioProducao.Location = new System.Drawing.Point(14, 66);
+            label_TempoMedioProducao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label_TempoMedioProducao.Name = "label_TempoMedioProducao";
+            label_TempoMedioProducao.Size = new System.Drawing.Size(153, 15);
+            label_TempoMedioProducao.TabIndex = 6;
+            label_TempoMedioProducao.Text = "Tempo medio de producao:";
             // 
             // comboBox_TempoMedioProducao
             // 
-            this.comboBox_TempoMedioProducao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_TempoMedioProducao.FormattingEnabled = true;
-            this.comboBox_TempoMedioProducao.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.comboBox_TempoMedioProducao.Location = new System.Drawing.Point(155, 53);
-            this.comboBox_TempoMedioProducao.Name = "comboBox_TempoMedioProducao";
-            this.comboBox_TempoMedioProducao.Size = new System.Drawing.Size(153, 21);
-            this.comboBox_TempoMedioProducao.TabIndex = 8;
+            comboBox_TempoMedioProducao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBox_TempoMedioProducao.FormattingEnabled = true;
+            comboBox_TempoMedioProducao.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            comboBox_TempoMedioProducao.Location = new System.Drawing.Point(181, 61);
+            comboBox_TempoMedioProducao.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            comboBox_TempoMedioProducao.Name = "comboBox_TempoMedioProducao";
+            comboBox_TempoMedioProducao.Size = new System.Drawing.Size(178, 23);
+            comboBox_TempoMedioProducao.TabIndex = 8;
+            comboBox_TempoMedioProducao.SelectedIndexChanged += comboBox_TempoMedioProducao_SelectedIndexChanged;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 89);
-            this.Controls.Add(this.comboBox_TempoMedioProducao);
-            this.Controls.Add(this.textBox_TempoMedioProducao);
-            this.Controls.Add(this.label_TempoMedioProducao);
-            this.Controls.Add(this.textBox_PecasOk);
-            this.Controls.Add(this.label_PecasOk);
-            this.Controls.Add(this.textBox_PecasSemFalhas);
-            this.Controls.Add(this.label_PecasSemFalhas);
-            this.Controls.Add(this.textBox_PecasProduzidas);
-            this.Controls.Add(this.label_PecasProduzidas);
-            this.Name = "Form1";
-            this.Text = "ManagerApp";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(691, 103);
+            Controls.Add(comboBox_TempoMedioProducao);
+            Controls.Add(textBox_TempoMedioProducao);
+            Controls.Add(label_TempoMedioProducao);
+            Controls.Add(textBox_PecasOk);
+            Controls.Add(label_PecasOk);
+            Controls.Add(textBox_PecasSemFalhas);
+            Controls.Add(label_PecasSemFalhas);
+            Controls.Add(textBox_PecasProduzidas);
+            Controls.Add(label_PecasProduzidas);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "Form1";
+            Text = "ManagerApp";
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
         #endregion
 
-        
+
         private System.Windows.Forms.Label label_PecasProduzidas;
         private System.Windows.Forms.TextBox textBox_PecasProduzidas;
         private System.Windows.Forms.TextBox textBox_PecasSemFalhas;
