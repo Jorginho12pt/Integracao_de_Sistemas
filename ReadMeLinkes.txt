@@ -26,6 +26,9 @@ https://www.rabbitmq.com/tutorials/tutorial-one-dotnet-stream
 ------------enable RabbitMQ Stream------------
 rabbitmq-plugins enable rabbitmq_stream
 
+------------DataGridView--------------------
+https://www.youtube.com/watch?v=GyLlpBZGsrE
+
 Notas:
 	não usar Console.WriteLine mas sim -> Debug.WriteLine
 	RAFA se te tiver a dar erros da update ao teu .net : https://dotnet.microsoft.com/en-us/download/dotnet
