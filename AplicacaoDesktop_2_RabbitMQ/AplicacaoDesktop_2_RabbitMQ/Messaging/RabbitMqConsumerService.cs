@@ -1,26 +1,28 @@
-﻿using AplicacaoWeb.Data;
-using AplicacaoWeb.Models;
-using RabbitMQ.Client;
+﻿using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client.Events;
-using System.Diagnostics;
+using RabbitMQ.Client;
+using System;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Text.Json;
 
-namespace AplicacaoWeb.Messaging
+namespace AplicacaoDesktop_2_RabbitMQ.Messaging
 {
-    // Foi para Testes
     public class RabbitMqConsumerService : BackgroundService
     {
-        private DataBaseCalls _dataBaseCalls;
+        private readonly Form1 _form;
 
-        public RabbitMqConsumerService(DataBaseCalls dataBaseCalls)
+        public RabbitMqConsumerService(Form1 form)
         {
-            _dataBaseCalls = dataBaseCalls;
+            _form = form;
         }
 
         protected async override Task ExecuteAsync(CancellationToken stoppingToken)
-        {         
-            var factory = new ConnectionFactory { 
+        {
+            var factory = new ConnectionFactory
+            {
                 HostName = "localhost",
                 Port = 5672,
                 UserName = "guest",
@@ -30,7 +32,7 @@ namespace AplicacaoWeb.Messaging
             using var channel = await connection.CreateChannelAsync();
 
             await channel.QueueDeclareAsync(
-                queue: "AplicacaoWeb",
+                queue: "AplicacaoDesktop",
                 durable: true,
                 exclusive: false,
                 autoDelete: false,
@@ -43,24 +45,26 @@ namespace AplicacaoWeb.Messaging
                 var body = ea.Body.ToArray();
                 string message = Encoding.UTF8.GetString(body);
 
-                Debug.WriteLine(message); 
+                Debug.WriteLine(message);
 
                 try
                 {
-                    _dataBaseCalls.InsertTesteCallSP(JsonSerializer.Deserialize<TesteRelatorio>(message));
-                } catch (Exception ex) {
-                    Debug.WriteLine(ex.ToString()); 
+                    _form.ApiWebCall(JsonSerializer.Deserialize<DesktopTeste>(message));
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
                 }
 
                 await ((AsyncEventingBasicConsumer)sender).Channel.BasicAckAsync(ea.DeliveryTag, multiple: false);
             };
 
-            await channel.BasicConsumeAsync("AplicacaoWeb", autoAck: false, consumer: consumer);
+            await channel.BasicConsumeAsync("AplicacaoDesktop", autoAck: false, consumer: consumer);
 
             while (!stoppingToken.IsCancellationRequested)
             {
                 await Task.Delay(5000, stoppingToken);
-            }       
+            }
         }
     }
 }

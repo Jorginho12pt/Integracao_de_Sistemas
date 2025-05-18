@@ -96,7 +96,7 @@
             TempoProducao.Location = new System.Drawing.Point(14, 75);
             TempoProducao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             TempoProducao.Name = "TempoProducao";
-            TempoProducao.Size = new System.Drawing.Size(182, 15);
+            TempoProducao.Size = new System.Drawing.Size(181, 15);
             TempoProducao.TabIndex = 4;
             TempoProducao.Text = "Tempo de Produção (segundos): ";
             // 
@@ -106,7 +106,7 @@
             RespostaTeste.Location = new System.Drawing.Point(14, 105);
             RespostaTeste.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             RespostaTeste.Name = "RespostaTeste";
-            RespostaTeste.Size = new System.Drawing.Size(107, 15);
+            RespostaTeste.Size = new System.Drawing.Size(106, 15);
             RespostaTeste.TabIndex = 6;
             RespostaTeste.Text = "Resposta do Teste: ";
             // 
@@ -170,7 +170,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(525, 173);
+            ClientSize = new System.Drawing.Size(525, 170);
             Controls.Add(button_SendRabbitMqStream);
             Controls.Add(button_SendRabbitMq);
             Controls.Add(button_Random);

@@ -103,7 +103,7 @@ namespace AplicacaoDesktop
             using var channel = await connection.CreateChannelAsync();
 
             await channel.QueueDeclareAsync(
-                    queue: "AplicacaoWeb",
+                    queue: "AplicacaoDesktop",
                     durable: true,
                     exclusive: false,
                     autoDelete: false,
@@ -113,7 +113,7 @@ namespace AplicacaoDesktop
 
             var body = Encoding.UTF8.GetBytes(json);
 
-            await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "AplicacaoWeb", body: body);
+            await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "AplicacaoDesktop", body: body);
 
             Debug.WriteLine($"{json}");
         }
