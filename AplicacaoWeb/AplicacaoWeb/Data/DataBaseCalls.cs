@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Linq.Expressions;
 
 namespace AplicacaoWeb.Data
 {
@@ -20,13 +21,13 @@ namespace AplicacaoWeb.Data
             {
                 List<Produto> produto = new List<Produto>();
 
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
+                using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
-                    using (SqlCommand command = new SqlCommand("GetProduto", SistemaWebConnection))
+                    using (SqlCommand command = new SqlCommand("GetProduto", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        SistemaWebConnection.Open();
+                        connection.Open();
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
@@ -37,7 +38,7 @@ namespace AplicacaoWeb.Data
                             body.TempoProducao = Convert.ToInt32(reader["TempoProducao"]);
                             produto.Add(body);
                         }
-                        SistemaWebConnection.Close();
+                        connection.Close();
                     }
                 }
 
@@ -55,13 +56,13 @@ namespace AplicacaoWeb.Data
             {
                 List<Testes> testes = new List<Testes>();
 
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
+                using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
-                    using (SqlCommand command = new SqlCommand("GetTestes", SistemaWebConnection))
+                    using (SqlCommand command = new SqlCommand("GetTestes", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        SistemaWebConnection.Open();
+                        connection.Open();
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
                         {
@@ -72,7 +73,7 @@ namespace AplicacaoWeb.Data
                             body.DataTeste = Convert.ToDateTime(reader["DataTeste"]);
                             testes.Add(body);
                         }
-                        SistemaWebConnection.Close();
+                        connection.Close();
                     }
                 }
 
@@ -88,9 +89,9 @@ namespace AplicacaoWeb.Data
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
+                using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
-                    using (var command = new SqlCommand("Insercao", SistemaWebConnection))
+                    using (var command = new SqlCommand("Insercao", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -99,9 +100,9 @@ namespace AplicacaoWeb.Data
                         command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProducao;
                         command.Parameters.Add("@_ResultadoTeste", SqlDbType.Int).Value = body.ResultadoTeste;
 
-                        SistemaWebConnection.Open();
+                        connection.Open();
                         command.ExecuteNonQuery();
-                        SistemaWebConnection.Close();
+                        connection.Close();
                     }
                 }
             }
@@ -116,9 +117,9 @@ namespace AplicacaoWeb.Data
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
+                using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
-                    using (SqlCommand command = new SqlCommand("AtualizacaoProduto", SistemaWebConnection))
+                    using (SqlCommand command = new SqlCommand("AtualizacaoProduto", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -127,9 +128,9 @@ namespace AplicacaoWeb.Data
                         command.Parameters.Add("@_DataHoraProducao", SqlDbType.DateTime2).Value = body.DataHoraProducao;
                         command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProducao;
 
-                        SistemaWebConnection.Open();
+                        connection.Open();
                         command.ExecuteNonQuery();
-                        SistemaWebConnection.Close();
+                        connection.Close();
                     }
                 }       
             }
@@ -143,9 +144,9 @@ namespace AplicacaoWeb.Data
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
+                using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
-                    using (SqlCommand command = new SqlCommand("AtualizacaoTestes", SistemaWebConnection))
+                    using (SqlCommand command = new SqlCommand("AtualizacaoTestes", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -154,9 +155,9 @@ namespace AplicacaoWeb.Data
                         command.Parameters.Add("@_CodigoResultado", SqlDbType.Int).Value = body.CodigoResultado;
                         command.Parameters.Add("@_DataTeste", SqlDbType.DateTime2).Value = body.DataTeste;
 
-                        SistemaWebConnection.Open();
+                        connection.Open();
                         command.ExecuteNonQuery();
-                        SistemaWebConnection.Close();
+                        connection.Close();
                     }
                 }   
             }
@@ -170,9 +171,9 @@ namespace AplicacaoWeb.Data
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
+                using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
-                    using (SqlCommand command = new SqlCommand("RemocaoProduto", SistemaWebConnection))
+                    using (SqlCommand command = new SqlCommand("RemocaoProduto", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -181,9 +182,9 @@ namespace AplicacaoWeb.Data
                         command.Parameters.Add("@_DataHoraProducao", SqlDbType.DateTime2).Value = body.DataHoraProducao;
                         command.Parameters.Add("@_TempoProducao", SqlDbType.Int).Value = body.TempoProducao;
 
-                        SistemaWebConnection.Open();
+                        connection.Open();
                         command.ExecuteNonQuery();
-                        SistemaWebConnection.Close();
+                        connection.Close();
                     }
                 }
             }
@@ -197,9 +198,9 @@ namespace AplicacaoWeb.Data
         {
             try
             {
-                using (SqlConnection SistemaWebConnection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
+                using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SistemaWeb")))
                 {
-                    using (SqlCommand command = new SqlCommand("RemocaoTestes", SistemaWebConnection))
+                    using (SqlCommand command = new SqlCommand("RemocaoTestes", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -208,9 +209,9 @@ namespace AplicacaoWeb.Data
                         command.Parameters.Add("@_CodigoResultado", SqlDbType.Int).Value = body.CodigoResultado;
                         command.Parameters.Add("@_DataTeste", SqlDbType.DateTime2).Value = body.DataTeste;
 
-                        SistemaWebConnection.Open();
+                        connection.Open();
                         command.ExecuteNonQuery();
-                        SistemaWebConnection.Close();
+                        connection.Close();
 
                     }
                 }
@@ -220,5 +221,121 @@ namespace AplicacaoWeb.Data
                 throw new Exception(ex.ToString());
             }
         }
+
+        //--------------------------------------SOAP--------------------------------------------------------
+        public string GetCodeProductMaxLosseCall()
+        {
+            try
+            {
+                string codigoPeca = "";
+                string query = "SELECT TOP 1 [CodigoPeca] FROM [dbo].[CustosPeca] ORDER BY prejuizo DESC";
+
+                using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SistemaContabilidade")))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+
+                        var result = command.ExecuteScalar();
+                        if (result != null && result != DBNull.Value)
+                        {
+                            codigoPeca = result.ToString();
+                        }
+                    }
+                }
+
+                return codigoPeca;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
+
+        public float GetPeriodTotalCall(int type, int periodo1, int periodo2)
+        {
+            try
+            {
+                string typeCall = type switch
+                {
+                    1 => "CustoProducao",
+                    2 => "Lucro",
+                    3 => "Prejuizo",
+                    _ => throw new ArgumentException("Tipo inválido")
+                };
+
+                float resposta = 0;
+                
+                string query = $@"SELECT {typeCall} FROM [SistemaContabilidade].[dbo].[CustosPeca] WHERE TempoProducao >= @periodo1 AND TempoProducao <= @periodo2";
+
+                using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SistemaContabilidade")))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.AddWithValue("@periodo1", periodo1.ToString());
+                        command.Parameters.AddWithValue("@periodo2", periodo2.ToString());
+
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                resposta += float.TryParse(reader[typeCall]?.ToString(), out float result) ? result : 0;
+                            }
+                        }
+                    }
+                }
+
+                return resposta;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
+
+        public CustosPecaFinancial GetProductFinancialCall(string codigoPeca)
+        {
+            try
+            {
+                CustosPecaFinancial ?custosPecaFinancial = null;
+                string query = "SELECT TOP 1 [CodigoPeca],[CustoProducao],[Lucro],[Prejuizo],[TempoProducao] FROM [SistemaContabilidade].[dbo].[CustosPeca] WHERE CodigoPeca = @codigoPeca";
+
+                using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SistemaContabilidade")))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.AddWithValue("@codigoPeca", codigoPeca);
+
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                custosPecaFinancial = new CustosPecaFinancial
+                                {
+                                    CodigoPeca = reader["CodigoPeca"].ToString(),
+                                    CustoProducao = reader["CustoProducao"].ToString(),
+                                    Lucro = reader["Lucro"].ToString(),
+                                    Prejuizo = reader["Prejuizo"].ToString(),
+                                    TempoProducao = reader["TempoProducao"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+
+                return custosPecaFinancial;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
+
     }
 }
