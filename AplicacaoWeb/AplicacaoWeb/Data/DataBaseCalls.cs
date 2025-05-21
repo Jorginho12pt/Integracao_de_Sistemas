@@ -112,7 +112,6 @@ namespace AplicacaoWeb.Data
             }
         }
 
-      
         public void UpdateProductCallSP([FromBody] Produto body)
         {
             try
@@ -336,6 +335,5 @@ namespace AplicacaoWeb.Data
                 throw new Exception(ex.ToString());
             }
         }
-
     }
 }
