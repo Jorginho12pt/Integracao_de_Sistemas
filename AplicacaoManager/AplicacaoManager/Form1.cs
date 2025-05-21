@@ -58,7 +58,7 @@ namespace AplicacaoManager
             //[3] comboBox_RespostaTest ( 1..6)
             string[] parts = message.Split(';');
 
-            if (parts.Length != 4)
+            if (parts.Length != 4 || parts[2]=="" || parts[3] == "")
             {
                 MessageBox.Show("Rafa limpa o RabbitMQ Stream pá!", "Erro message invalida",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -96,12 +96,20 @@ namespace AplicacaoManager
                     MedioCalc.Add(1);
                     TempoMedioProducao.Add(int.Parse(parts[2]));
                     CodigoPeca.Add(parts[1]);
+                    
                     SafeUIInvoke(() =>
                     {
                         comboBox_TempoMedioProducao.Items.Add(parts[1]);
                     });
                 }
-
+                for (int i = 0; i < CodigoPeca.Count; i++)
+                {
+                    Debug.WriteLine("--------------------------------");
+                    Debug.WriteLine(MedioCalc[i]);
+                    Debug.WriteLine(TempoMedioProducao[i]);
+                    Debug.WriteLine(CodigoPeca[i]);
+                    Debug.WriteLine("--------------------------------");
+                }
                 PopulateForm();
             }
             else

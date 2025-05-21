@@ -96,7 +96,7 @@
             TempoProducao.Location = new System.Drawing.Point(14, 75);
             TempoProducao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             TempoProducao.Name = "TempoProducao";
-            TempoProducao.Size = new System.Drawing.Size(181, 15);
+            TempoProducao.Size = new System.Drawing.Size(182, 15);
             TempoProducao.TabIndex = 4;
             TempoProducao.Text = "Tempo de Produção (segundos): ";
             // 
@@ -106,7 +106,7 @@
             RespostaTeste.Location = new System.Drawing.Point(14, 105);
             RespostaTeste.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             RespostaTeste.Name = "RespostaTeste";
-            RespostaTeste.Size = new System.Drawing.Size(106, 15);
+            RespostaTeste.Size = new System.Drawing.Size(107, 15);
             RespostaTeste.TabIndex = 6;
             RespostaTeste.Text = "Resposta do Teste: ";
             // 
@@ -160,7 +160,7 @@
             button_SendRabbitMqStream.Location = new System.Drawing.Point(234, 133);
             button_SendRabbitMqStream.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             button_SendRabbitMqStream.Name = "button_SendRabbitMqStream";
-            button_SendRabbitMqStream.Size = new System.Drawing.Size(146, 27);
+            button_SendRabbitMqStream.Size = new System.Drawing.Size(182, 27);
             button_SendRabbitMqStream.TabIndex = 14;
             button_SendRabbitMqStream.Text = "Enviar RabbitMQ Stream";
             button_SendRabbitMqStream.UseVisualStyleBackColor = true;
