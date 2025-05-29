@@ -40,6 +40,7 @@
             button_Random = new System.Windows.Forms.Button();
             button_SendRabbitMq = new System.Windows.Forms.Button();
             button_SendRabbitMqStream = new System.Windows.Forms.Button();
+            checkBox_Auto = new System.Windows.Forms.CheckBox();
             SuspendLayout();
             // 
             // DataHora
@@ -96,7 +97,7 @@
             TempoProducao.Location = new System.Drawing.Point(14, 75);
             TempoProducao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             TempoProducao.Name = "TempoProducao";
-            TempoProducao.Size = new System.Drawing.Size(182, 15);
+            TempoProducao.Size = new System.Drawing.Size(181, 15);
             TempoProducao.TabIndex = 4;
             TempoProducao.Text = "Tempo de Produção (segundos): ";
             // 
@@ -106,7 +107,7 @@
             RespostaTeste.Location = new System.Drawing.Point(14, 105);
             RespostaTeste.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             RespostaTeste.Name = "RespostaTeste";
-            RespostaTeste.Size = new System.Drawing.Size(107, 15);
+            RespostaTeste.Size = new System.Drawing.Size(106, 15);
             RespostaTeste.TabIndex = 6;
             RespostaTeste.Text = "Resposta do Teste: ";
             // 
@@ -166,11 +167,23 @@
             button_SendRabbitMqStream.UseVisualStyleBackColor = true;
             button_SendRabbitMqStream.Click += button_SendRabbitMqStream_Click;
             // 
+            // checkBox_Auto
+            // 
+            checkBox_Auto.AutoSize = true;
+            checkBox_Auto.Location = new System.Drawing.Point(519, 136);
+            checkBox_Auto.Name = "checkBox_Auto";
+            checkBox_Auto.Size = new System.Drawing.Size(57, 19);
+            checkBox_Auto.TabIndex = 15;
+            checkBox_Auto.Text = "Auto?";
+            checkBox_Auto.UseVisualStyleBackColor = true;
+            checkBox_Auto.CheckedChanged += checkBox_Auto_CheckedChanged;
+            // 
             // Form
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(525, 170);
+            ClientSize = new System.Drawing.Size(588, 170);
+            Controls.Add(checkBox_Auto);
             Controls.Add(button_SendRabbitMqStream);
             Controls.Add(button_SendRabbitMq);
             Controls.Add(button_Random);
@@ -205,6 +218,7 @@
         private System.Windows.Forms.Button button_Random;
         private System.Windows.Forms.Button button_SendRabbitMq;
         private System.Windows.Forms.Button button_SendRabbitMqStream;
+        private System.Windows.Forms.CheckBox checkBox_Auto;
     }
 }
 
