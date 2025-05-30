@@ -63,7 +63,7 @@ namespace AplicacaoDesktop_2_RabbitMQ
                 {
                     var response = await client.PostAsync("https://localhost:7252/Api/InsertTesteSP", content);
                     var responseString = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show(responseString);
+                    //MessageBox.Show(responseString);
                 }
                 if (!(info.ResultadoTeste==1) && !(info.ResultadoTeste==6))
                 {
