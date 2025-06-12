@@ -1,4 +1,4 @@
-# System Integration Project (Academic)
+# System Integration Academic Project
 
 This project addresses the integration of a legacy desktop system with a modern web-based analytics platform for an industrial company. The goal was to automate and synchronize production data flow, eliminating manual processes and reducing errors.
 
